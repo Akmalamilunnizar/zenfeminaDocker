@@ -14,11 +14,19 @@ return new class extends Migration
         Schema::create('cycles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+<<<<<<< HEAD
             $table->enum('type', ['est', 'hist'])->default('hist');
             $table->integer('cycle_length');
             $table->integer('period_length');
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
+=======
+            $table->enum('type', ['est', 'hist'])->nullable(false)->default('hist');
+            $table->integer('cycle_length');
+            $table->integer('period_length');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+>>>>>>> 9e6190f (add: user and cycle's migrations)
 
         });
     }
