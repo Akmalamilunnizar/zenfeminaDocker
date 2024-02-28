@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('verifications', function (Blueprint $table) {
             $table->id();
-            $table->string('username', 30);
-            $table->string('email', 100);
-            $table->text('profile_img')->nullable();
-            $table->date('birthDate');
-            $table->string('password');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('code', 5);
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('verifications');
     }
 };
