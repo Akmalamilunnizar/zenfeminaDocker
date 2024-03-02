@@ -18,7 +18,10 @@ return new class extends Migration
             $table->text('profile_img')->nullable();
             $table->date('birthDate')->nullable();
             $table->string('password');
+<<<<<<< HEAD:database/migrations/2024_02_15_013819_create_users_table.php
             $table->string('token', 100)->unique('user_token')->nullable();
+=======
+>>>>>>> 848c087 (Pesan commit Anda):database/migrations/2014_10_12_000000_create_users_table.php
         });
     }
 
