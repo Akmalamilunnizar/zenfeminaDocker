@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('istihadhahs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->integer('istihadhah_legth');
             $table->date('start_date');
             $table->date('end_date');
         });
