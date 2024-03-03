@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('reminders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->enum('type', ['period', 'praying', 'fasting']);
-            $table->integer('day');
-            $table->time('time');
-            $table->tinyInteger('is_on');
+            $table->enum('type', ['periodStart', 'periodEnd', 'praying', 'fasting']);
+            $table->integer('day')->default(0);
+            $table->time('time')->default('08:00:00');
+            $table->tinyInteger('is_on')->default(0);
         });
     }
 
