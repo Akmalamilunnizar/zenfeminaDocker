@@ -1,14 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Reminder extends Model
+class Debt extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'type', 'details', 'status', 'date', 'user_id'
+    ];
 
     protected function user() :BelongsTo
     {
