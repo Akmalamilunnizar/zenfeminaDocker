@@ -22,3 +22,9 @@ Route::controller(AuthController::class)->group(function() {
     Route::get('/login', 'create')->name('login');
     Route::post('login', 'store');
 });
+
+Route::get('/dashboard', function (){
+   return view('pages.dashboard', [
+       'title' => 'Dashboard'
+   ]);
+});
