@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -12,7 +15,9 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
+        return view('pages.auth.login', [
+            'title' => 'login'
+        ]);
     }
 
     /**
@@ -20,17 +25,25 @@ class AuthController extends Controller
      */
     public function create()
     {
-        return view('pages.auth.login', [
-            'title' => 'login'
-        ]);
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        //
+        $user = User::where('username', $request->username)->first();
+        if (!$user) {
+            return redirect()->route('login')->withErrors(['username' => 'username tidak ditemukan']);
+        }
+
+        if (!Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+            return redirect()->route('login')->withErrors(['password' => 'password tidak sesuai']);
+        }
+
+        $request->session()->regenerate();
+        return redirect('/dashboard');
     }
 
     /**

@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 Route::controller(AuthController::class)->group(function() {
-    Route::get('/login', 'create')->name('login');
-    Route::post('login', 'store');
+    Route::get('/login', 'index')->name('login');
+    Route::post('/store', 'store');
 });
 
 Route::get('/dashboard', function (){
