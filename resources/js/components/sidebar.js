@@ -3,11 +3,11 @@ import isDesktop from '../helper/isDesktop'
 
 /**
  * Calculate nested children height in sidebar menu
-* @param {HTMLElement} el 
+* @param {HTMLElement} el
 */
 const calculateChildrenHeight = (el, deep = false) => {
   const children = el.children
-  
+
   let height = 0
   for(let i = 0; i < el.childElementCount; i++) {
     const child = children[i]
@@ -22,14 +22,14 @@ const calculateChildrenHeight = (el, deep = false) => {
         height += childrenHeight
       }
     }
-    
+
   }
   el.style.setProperty('--submenu-height', height + 'px')
   return height
 }
 
 /**
- * a Sidebar component
+ * a Sidebar components
  * @param  {HTMLElement} el - sidebar element
  * @param  {object} options={} - options
  */
@@ -53,7 +53,7 @@ class Sidebar {
       .forEach((el) => el.addEventListener("click", this.toggle.bind(this)))
     window.addEventListener("resize", this.onResize.bind(this))
 
-    
+
     const toggleSubmenu = (el) => {
       if (el.classList.contains("submenu-open")) {
         el.classList.remove('submenu-open')
@@ -61,16 +61,16 @@ class Sidebar {
       } else {
         el.classList.remove("submenu-closed")
         el.classList.add("submenu-open")
-      } 
+      }
     }
 
-    
+
 
 
     let sidebarItems = document.querySelectorAll(".sidebar-item.has-sub")
     for (var i = 0; i < sidebarItems.length; i++) {
       let sidebarItem = sidebarItems[i]
-      
+
       sidebarItems[i]
         .querySelector(".sidebar-link")
         .addEventListener("click", (e) => {
@@ -78,15 +78,15 @@ class Sidebar {
           let submenu = sidebarItem.querySelector(".submenu")
           toggleSubmenu(submenu)
         })
-      
-      
+
+
       // If submenu has submenu
-      const submenuItems = sidebarItem.querySelectorAll('.submenu-item.has-sub') 
+      const submenuItems = sidebarItem.querySelectorAll('.submenu-item.has-sub')
       submenuItems.forEach(item => {
         item.addEventListener('click', () => {
           const submenuLevelTwo = item.querySelector('.submenu')
           toggleSubmenu(submenuLevelTwo)
-          
+
           // Pass second .submenu
           const height = calculateChildrenHeight(item.parentElement, true)
 
@@ -109,9 +109,9 @@ class Sidebar {
 
   }
 
-  
 
-  
+
+
 
   /**
    * On Sidebar Rezise Event
@@ -235,7 +235,7 @@ const onFirstLoad = (sidebarEL) => {
     let submenu = submenus[i]
     const sidebarItem = submenu.parentElement
     const height = submenu.clientHeight
-    
+
     if(sidebarItem.classList.contains('active')) submenu.classList.add('submenu-open')
     else submenu.classList.add('submenu-closed')
     setTimeout(() => {

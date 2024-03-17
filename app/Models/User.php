@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,8 +15,12 @@ class User extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-      'username', 'email', 'profile_img', 'birthdate', 'password'
+      'username', 'email', 'profile_img', 'birthDate', 'password'
     ];
+
+    public function getAgeAttribute(){
+        return Carbon::parse($this->birthDate)->age;
+    }
 
     protected function cycle() :HasMany
     {

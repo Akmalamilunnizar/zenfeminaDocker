@@ -51,8 +51,8 @@
 
             <li class="sidebar-title">Menu</li>
 
-            <li class="sidebar-item ">
-                <a href=""  class='sidebar-link'>
+            <li class="sidebar-item @yield('user')">
+                <a href="{{  route('users.index') }}"  class='sidebar-link'>
                     <i class="bi bi-people-fill"></i>
                     <span>Users</span>
                 </a>

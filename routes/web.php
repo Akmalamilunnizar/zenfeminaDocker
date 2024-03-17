@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,14 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/store', 'store');
 });
 
-Route::get('/dashboard', function (){
-   return view('pages.dashboard', [
-       'title' => 'Dashboard'
-   ]);
+Route::middleware('auth')->group(function (){
+    //dashboard
+    Route::get('/dashboard', function (){
+        return view('pages.dashboard', [
+            'title' => 'Dashboard'
+        ]);
+    });
+
+    //user
+    Route::resource('users', UserController::class);
 });
