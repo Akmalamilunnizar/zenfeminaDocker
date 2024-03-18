@@ -17,9 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = User::with('roles')->get()->filter(
+            fn ($user) => $user->roles->where('name', 'user')->toArray()
+        );
         return view('pages.user.index', [
             'title' => 'User',
-            'users' => User::all()
+            'users' => $user
         ]);
     }
 
@@ -92,7 +95,6 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->removeRole('user');
         $user->delete();
         return to_route('users.index')->with('alert_s', "Berhasil menghapus user");
     }
