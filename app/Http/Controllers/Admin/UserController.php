@@ -46,11 +46,12 @@ class UserController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        User::create([
+        $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+        $user->assignRole('user');
         return to_route('users.index')->with('alert_s', 'Berhasil menambahkan user');
     }
 
@@ -91,6 +92,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $user->removeRole('user');
         $user->delete();
         return to_route('users.index')->with('alert_s', "Berhasil menghapus user");
     }
