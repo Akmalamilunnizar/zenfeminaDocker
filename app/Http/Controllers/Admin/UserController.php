@@ -39,8 +39,7 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:users,email',
-            'password' => 'required|size:8'
+            'email' => 'required|unique:users,email'
         ]);
 
         if ($validator->fails()) {
@@ -79,7 +78,11 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update($request->validated());
+        $user->update([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
+        ]);
         return to_route('users.index')->with('alert_s', "Berhasil mengubah data user");
     }
 

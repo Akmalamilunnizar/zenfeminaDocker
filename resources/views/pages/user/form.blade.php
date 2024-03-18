@@ -22,7 +22,6 @@
     </div>
     @enderror
 </div>
-@if($user == null)
     <div class="mb-4">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}">
@@ -32,7 +31,6 @@
         </div>
         @enderror
     </div>
-@endif
 
 <div class="mb-4 text-end">
     <button type="submit" class="btn btn-primary">Simpan</button>
