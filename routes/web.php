@@ -24,7 +24,7 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/store', 'store');
 });
 
-Route::middleware('auth')->group(function (){
+Route::middleware(['auth', 'role:admin'])->group(function (){
     //dashboard
     Route::get('/dashboard', function (){
         return view('pages.dashboard', [
