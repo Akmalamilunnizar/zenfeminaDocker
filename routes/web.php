@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(AuthController::class)->group(function() {
+Route::controller(AuthController::class)->middleware('guest')->group(function() {
     Route::get('/login', 'index')->name('login');
     Route::post('/store', 'store');
 });
