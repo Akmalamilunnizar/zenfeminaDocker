@@ -5,12 +5,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class User extends Authenticatable
+class User extends Model implements Authenticatable
 {
     use HasFactory, HasRoles;
     public $timestamps = false;
@@ -46,5 +46,35 @@ class User extends Authenticatable
     protected function reminder() :HasMany
     {
         return $this->hasMany(Reminder::class);
+    }
+
+    public function getAuthIdentifierName()
+    {
+        return 'email';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->email;
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getRememberToken()
+    {
+        return $this->token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'token';
     }
 }
