@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
+use App\Http\Requests\Admin\AuthRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +31,7 @@ class AuthController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(LoginRequest $request)
+    public function store(AuthRequest $request)
     {
         $user = User::where('email', $request->email)->first();
         if (!$user) {
