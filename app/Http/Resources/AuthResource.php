@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class RegisterResource extends JsonResource
+class AuthResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,7 +17,8 @@ class RegisterResource extends JsonResource
         return [
             'id' => $this->id,
             'username' => $this->username,
-            'email' => $this->email
+            'email' => $this->email,
+            'token' => $this->whenNotNull($this->token)
         ];
     }
 }
