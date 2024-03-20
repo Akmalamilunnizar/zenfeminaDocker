@@ -14,11 +14,11 @@
                     <form action="/store" method="post">
                         @csrf
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl @error('username') is-invalid @enderror" id="username" placeholder="Username" name="username" value="{{old('username')}}">
+                            <input type="email" class="form-control form-control-xl @error('email') is-invalid @enderror" id="email" placeholder="email" name="email" value="{{old('email')}}">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
-                            @error('username')
+                            @error('email')
                             <div class="invaid-feedback">
                                 <small class="text-danger">{{ $message }}</small>
                             </div>

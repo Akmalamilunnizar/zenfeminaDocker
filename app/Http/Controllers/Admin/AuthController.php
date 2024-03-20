@@ -33,12 +33,12 @@ class AuthController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $user = User::where('username', $request->username)->first();
+        $user = User::where('email', $request->email)->first();
         if (!$user) {
-            return redirect()->route('login')->withErrors(['username' => 'username tidak ditemukan']);
+            return redirect()->route('login')->withErrors(['email' => 'email tidak ditemukan']);
         }
 
-        if (!Auth::attempt(['username' => $request->username, 'password' => $request->password])) {
+        if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('login')->withErrors(['password' => 'password tidak sesuai']);
         }
 
