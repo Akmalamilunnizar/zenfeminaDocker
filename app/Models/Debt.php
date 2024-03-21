@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Debt extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
-        'type', 'details', 'status', 'date', 'user_id'
+        'type', 'details', 'is_done', 'date', 'user_id'
     ];
 
     protected function user() :BelongsTo
