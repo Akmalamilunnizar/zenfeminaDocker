@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Educations extends Model
+class Education extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,7 +13,7 @@ class Educations extends Model
     ];
 
     // Relasi dengan model Category
-    public function Categories()
+    public function category()
     {
         return $this->belongsTo(Categories::class);
     }
