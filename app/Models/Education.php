@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
-    use HasFactory;
+    protected $table = 'educations';
     protected $fillable = [
         'categories_id', 'title', 'content', 'image', 'on_clicked'
     ];
@@ -15,6 +15,6 @@ class Education extends Model
     // Relasi dengan model Category
     public function category()
     {
-        return $this->belongsTo(Categories::class);
+        return $this->belongsTo(Category::class);
     }
 }
