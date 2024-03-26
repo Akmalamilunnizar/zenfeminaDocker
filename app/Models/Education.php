@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Education extends Model
 {
     protected $table = 'educations';
+    public $timestamps = false;
     protected $fillable = [
         'categories_id', 'title', 'content', 'image', 'on_clicked'
     ];

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\ApiAuthMiddleware;
 use App\Http\Controllers\Api\DebtController;
+use App\Http\Controllers\Api\EducationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,16 @@ Route::middleware(ApiAuthMiddleware::class)->group(function (){
         Route::get('/get', 'get');
         Route::post('/add', 'add');
         Route::post('/update', 'update');
+    });
+
+    //education
+    Route::controller(EducationController::class)->prefix('/education')->group(function (){
+        Route::get('/trending', 'trending');
+        Route::get('/category', 'allCategory');
+        Route::get('/all', 'getAll');
+        Route::post('/byCategory', 'getByCategory');
+        Route::post('byId', 'getById');
+        Route::post('onClick', 'onClick');
     });
 });
 
