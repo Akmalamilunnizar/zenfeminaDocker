@@ -15,8 +15,10 @@ class DebtController extends Controller
 {
     public function get(DebtRequest $request)
     {
+        $user = Auth::user();
         $data = $request->validated();
         $debt = Debt::query()->where([
+            ['user_id', $user->id],
             ['type', $data['type']],
             ['is_done', $data['is_done']]
         ])->get();
