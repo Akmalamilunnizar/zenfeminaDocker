@@ -21,60 +21,15 @@ class AuthController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(AuthRequest $request)
     {
-        $user = User::where('email', $request->email)->first();
-        if (!$user) {
-            return redirect()->route('login')->withErrors(['email' => 'email tidak ditemukan']);
-        }
-
         if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('login')->withErrors(['password' => 'password tidak sesuai']);
         }
 
         $request->session()->regenerate();
         return redirect('/dashboard');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
