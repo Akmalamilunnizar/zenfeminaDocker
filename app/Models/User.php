@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Model implements Authenticatable
+class User extends Authenticatable
 {
     use HasFactory, HasRoles;
     public $timestamps = false;
@@ -48,33 +48,4 @@ class User extends Model implements Authenticatable
         return $this->hasMany(Reminder::class);
     }
 
-    public function getAuthIdentifierName()
-    {
-        return 'email';
-    }
-
-    public function getAuthIdentifier()
-    {
-        return $this->email;
-    }
-
-    public function getAuthPassword()
-    {
-        return $this->password;
-    }
-
-    public function getRememberToken()
-    {
-        return $this->token;
-    }
-
-    public function setRememberToken($value)
-    {
-        $this->token = $value;
-    }
-
-    public function getRememberTokenName()
-    {
-        return 'token';
-    }
 }
