@@ -38,7 +38,10 @@ class DashboardController extends Controller
     public function getCycle(DashboardRequest $request) :DashboardResource
     {
         $data = $request->validated();
-        $cycle = Cycle::where('type', $data['type'])
+        $cycle = Cycle::where([
+            ['type', $data['type']],
+            ['user_id', Auth::user()->id]
+        ])
             ->orderBy('id', 'desc')
             ->first();
         return new DashboardResource($cycle);
@@ -49,7 +52,8 @@ class DashboardController extends Controller
         $data = $request->validated();
         $debt = Debt::where([
             ['type', $data['type']],
-            ['is_done', '0']
+            ['is_done', '0'],
+            ['user_id', Auth::user()->id]
         ])->count();
         return response()->json([
             'data' => $debt
