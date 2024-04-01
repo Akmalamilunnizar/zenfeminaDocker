@@ -27,8 +27,8 @@
         @include('layout.footer')
     </div>
 </div>
-<script src="assets/static/js/components/dark.js"></script>
-<script src="assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="{{asset('assets/static/js/components/dark.js')}}"></script>
+<script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>

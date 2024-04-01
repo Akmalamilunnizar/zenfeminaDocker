@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
             'title' => 'Dashboard'
         ]);
     });
+
+    Route::resource('dashboard', DashboardController::class)
+        ->only('index');
 
     //user
     Route::resource('users', UserController::class);
