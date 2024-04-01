@@ -10,7 +10,7 @@ class Istihadhah extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'istihadhah_length', 'start_date', 'end_date', 'user_id'
+        'start_date', 'end_date', 'user_id'
     ];
 
     protected function user() :BelongsTo
