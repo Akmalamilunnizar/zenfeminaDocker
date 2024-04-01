@@ -7,6 +7,7 @@ use App\Http\Middleware\ApiAuthMiddleware;
 use App\Http\Controllers\Api\DebtController;
 use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\ReminderController;
+use App\Http\Controllers\Api\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,13 @@ Route::middleware(ApiAuthMiddleware::class)->group(function (){
        Route::get('/all', 'getAll');
        Route::post('/byId', 'getById');
        Route::post('/update', 'update');
+    });
+
+    //home
+    Route::controller(DashboardController::class)->prefix('/home')->group(function (){
+        Route::post('/question', 'question');
+        Route::get('/getCycle', 'getCycle');
+        Route::get('/getDebt', 'getDebt');
     });
 });
 

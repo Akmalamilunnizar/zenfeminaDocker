@@ -23,6 +23,13 @@ class DashboardRequest extends FormRequest
      */
     public function rules(): array
     {
+        $rule = [
+            'type' => 'required'
+        ];
+
+        if($this->getMethod() == 'GET')
+            return $rule;
+
         return [
             'birthDate' => 'required|date_format:Y-m-d',
             'lastDate' => 'required|date_format:Y-m-d',

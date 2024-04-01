@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Cycle extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'type', 'cycle_length', 'period_length', 'start_date', 'end_date', 'user_id'
