@@ -51,10 +51,8 @@ class EducationController extends Controller
                 'status' => 'nothing'
             ])->setStatusCode(200);
 
-        return view('pages.education.index', [
-            'title' => 'Educations',
-            'educations' => $education,
-            'length' => $education->count()
+        return response()->json([
+            'educations' => $education
         ]);
     }
 
