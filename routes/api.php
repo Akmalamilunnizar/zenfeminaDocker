@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\DebtController;
 use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\ReminderController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\CycleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,11 @@ Route::middleware(ApiAuthMiddleware::class)->group(function (){
         Route::post('/question', 'question');
         Route::get('/getCycle', 'getCycle');
         Route::get('/getDebt', 'getDebt');
+    });
+
+    //Cycle
+    Route::controller(CycleController::class)->prefix('/cycle')->group(function (){
+        Route::get('all', 'getAll');
     });
 });
 
