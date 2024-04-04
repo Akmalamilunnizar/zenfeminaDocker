@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\EducationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,20 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         return view('pages.dashboard', [
             'title' => 'Dashboard'
         ]);
-    });
+    })->name('dashboard');
 
     Route::resource('dashboard', DashboardController::class)
         ->only('index');
 
     //user
-    Route::resource('users', UserController::class);
+    Route::resource('users', UserController::class)
+        ->except('show');
+
+    //education
+    Route::resource('educations', EducationController::class)
+        ->except('show');
+    Route::controller(EducationController::class)->prefix('educations')->name('educations.')->group(function (){
+        Route::get('search', 'search')->name('search');
+        Route::get('education', 'education')->name('education');
+    });
 });

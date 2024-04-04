@@ -58,8 +58,8 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a href=""  class='sidebar-link'>
+            <li class="sidebar-item @yield('education')">
+                <a href="{{ route('educations.index') }}"  class='sidebar-link'>
                     <i class="bi bi-journal-bookmark-fill"></i>
                     <span>Educations</span>
                 </a>
