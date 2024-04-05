@@ -42,9 +42,23 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         ->except('show');
 
     //education
-    Route::resource('educations', EducationController::class)
-        ->except('show');
-    Route::controller(EducationController::class)->prefix('educations')->name('educations.')->group(function (){
+//    Route::resource('educations', EducationController::class)
+//        ->except('show');
+//    Route::controller(EducationController::class)->prefix('educations')->name('educations.')->group(function (){
+//        Route::get('search', 'search')->name('search');
+//        Route::get('education', 'education')->name('education');
+//    });
+
+    Route::prefix('educations')->name('educations.')->controller(EducationController::class)->group(function () {
+//        Route::post('store', 'store')->name('store');
+//        Route::match(['PUT', 'PATCH'], '{item}/update', 'update')->name('update');
+//
+//        Route::get('datatables', 'datatables')->name('datatables');
+//        Route::get('{item}', 'show')->name('show');
+//
+        Route::delete('{education}', 'destroy')->name('destroy');
+
+        Route::get('/', 'index')->name('index');
         Route::get('search', 'search')->name('search');
         Route::get('education', 'education')->name('education');
     });

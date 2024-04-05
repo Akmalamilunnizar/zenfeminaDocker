@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      */
@@ -75,9 +77,10 @@ class EducationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Education $education)
     {
-        //
+        $education->delete();
+        return $this->success(Education::all(), message: 'Berhasil menghapus Artikel');
     }
 
     public function education()

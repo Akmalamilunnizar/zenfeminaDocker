@@ -19,7 +19,7 @@
             </form>
         </div>
 
-        <div class="row" id="articles">
+        <div class="row article" id="articles">
 
         </div>
     </section>
@@ -106,8 +106,7 @@
                 deleteButton.style.padding = '4px 8px';
                 deleteButton.id = 'deleteArticle';
                 deleteButton.name = 'deleteArticle';
-                deleteButton.dataset.bsToggle = 'modal';
-                deleteButton.dataset.bsTarget = '#basicModal3';
+                deleteButton.value = education.id;
                 deleteButton.innerHTML = '<i class="bi bi-trash"></i>';
 
                 // Menambahkan elemen tombol ke dalam div buttonContainer
@@ -122,6 +121,62 @@
                 article.appendChild(card);
             });
         }
+
+        // $('#article').on('click', '.deleteArticle', function(e) {
+        //     console.log('yes');
+        // });
+
+        // const parentElement = document.getElementById('article');
+        // const child = document.getElementById('deleteArticle');
+        // console.log(parentElement.contains(child));
+
+        // document.addEventListener('click', function(event) {
+        //     const clickedElement = event.target;
+        //     console.log('Elemen yang diklik:', clickedElement);
+        // });
+
+        function deleteItem(id) {
+            $.ajax({
+                url: `/educations/${id}`,
+                method: 'DELETE',
+                success(res) {
+                    $('#articles').empty();
+                    processData(res.data);
+                    // console.log(res.data);
+
+                    Swal.fire({
+                        icon: 'success',
+                        text: res.meta.message,
+                        timer: 1500,
+                    });
+                },
+                error(err) {
+                    Swal.fire({
+                        icon: 'error',
+                        text: err.responseJSON,
+                        timer: 1500,
+                    });
+                },
+            });
+        }
+
+        // $('#article').on('click', '#deleteArticle', function(e) {
+        //     console.log($(this).val());
+        // });
+
+        $('#article').on('click', '#deleteArticle', function(e) {
+            Swal.fire({
+                icon: 'question',
+                text: 'Apakah anda yakin?',
+                showCancelButton: true,
+                cancelButtonText: 'Batal',
+            }).then((res) => {
+                if(res.isConfirmed)
+                    deleteItem($(this).val());
+            });
+        });
+
+
 
 
         $(document).on('keyup', function (e){
