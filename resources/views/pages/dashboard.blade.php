@@ -2,8 +2,13 @@
 @section('dashboard', 'active')
 
 @section('content')
-    <div class="page-heading">
-        <h3>Dashboard</h3>
+    <div class="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            </ol>
+        </nav>
     </div>
     <div class="page-content">
         <section class="row">

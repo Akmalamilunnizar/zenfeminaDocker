@@ -4,8 +4,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-10">
-            <div>
-                <h3>Daftar pengguna</h3>
+            <div class="pagetitle">
+                <h1>Daftar Pengguna</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                        <li class="breadcrumb-item">User</li>
+                    </ol>
+                </nav>
             </div>
             <div class="card">
                 <div class="card-body">
