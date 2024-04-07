@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\EducationRequest;
+use App\Models\Category;
 use App\Models\Education;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
@@ -61,15 +63,20 @@ class EducationController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Education $education)
     {
-        //
+        $category = Category::all();
+        return view('pages.education.edit', [
+            'title' => 'Edit Education',
+            'educations' => $education,
+            'categories' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EducationRequest $request, Education $education)
     {
         //
     }

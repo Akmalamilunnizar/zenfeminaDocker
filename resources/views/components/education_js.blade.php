@@ -65,6 +65,7 @@
             editButton.style.marginRight = '5px'
             editButton.id = 'btn-edit';
             editButton.name = 'btn-edit';
+            editButton.value = education.id;
             editButton.innerHTML = '<i class="bi bi-pencil-fill"></i>';
 
             // Membuat tombol delete
@@ -131,6 +132,17 @@
                 deleteItem($(this).val());
         });
     });
+
+    $('#article').on('click', '#btn-edit', function(e) {
+        window.location.href = "{{ route('educations.edit', 'VALUE') }}".replace('VALUE', $(this).val());
+    });
+
+    const editButton = document.getElementById('btn-edit');
+
+    // editButton.addEventListener('click', function() {
+    //     console.log($(this).val);
+    //     // window.location.href = "/route-tujuan";
+    // });
 
     $(document).on('keyup', function (e){
         e.preventDefault();
