@@ -31,6 +31,8 @@
             img.alt = '...';
             img.style.padding = '0';
             img.style.borderRadius = '8px 8px 0px 0px';
+            img.style.width = '100%';
+            img.style.maxHeight = '270px';
 
             //card body
             const cardBody = document.createElement('div');
