@@ -49,6 +49,8 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 //        Route::get('datatables', 'datatables')->name('datatables');
 //        Route::get('{item}', 'show')->name('show');
 //
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
         Route::delete('{education}', 'destroy')->name('destroy');
         Route::get('/{education}/edit', 'edit')->name('edit');
         Route::put('/{education}/update', 'update')->name('update');

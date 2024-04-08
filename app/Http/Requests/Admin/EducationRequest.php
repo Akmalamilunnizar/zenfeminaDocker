@@ -22,7 +22,10 @@ class EducationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'image' => 'required',
+            'title' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'contents' => 'required'
         ];
     }
 }

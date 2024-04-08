@@ -29,15 +29,33 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view('pages.education.create', [
+            'title' => 'new Education',
+            'categories' => $category
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EducationRequest $request)
     {
-        //
+//        dd($request);
+        $image = $request->file('image')->getClientOriginalName();
+
+        Education::create([
+            'image' => $image,
+            'title' => $request->title,
+            'category_id' => $request->category_id,
+            'content' => $request->contents,
+        ]);
+
+        $destination_path = getcwd() . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'educations' . DIRECTORY_SEPARATOR;
+        $targetFile = $destination_path . basename($image);
+        move_uploaded_file($request->file('image')->getPathname(), $targetFile);
+
+        return to_route('educations.index')->with('alert_s', 'Berhasil menambahkan Edukasi');
     }
 
     /**
@@ -78,7 +96,7 @@ class EducationController extends Controller
      */
     public function update(EducationRequest $request, Education $education)
     {
-        //
+
     }
 
     /**
@@ -99,6 +117,5 @@ class EducationController extends Controller
             'educations' => $education,
             'length' => $length
         ]);
-
     }
 }

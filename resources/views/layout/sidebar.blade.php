@@ -65,8 +65,8 @@
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a href=""  class='sidebar-link'>
+            <li class="sidebar-item @yield('uploadEducation')">
+                <a href="{{route('educations.create')}}"  class='sidebar-link'>
                     <i class="bi bi-cloud-arrow-up"></i>
                     <span>Upload Education</span>
                 </a>
