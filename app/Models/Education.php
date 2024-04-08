@@ -10,7 +10,7 @@ class Education extends Model
     protected $table = 'educations';
     public $timestamps = false;
     protected $fillable = [
-        'categories_id', 'title', 'content', 'image', 'on_clicked'
+        'category_id', 'title', 'content', 'image'
     ];
 
     // Relasi dengan model Category
