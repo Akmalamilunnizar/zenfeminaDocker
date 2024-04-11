@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EducationRequest;
 use App\Models\Category;
 use App\Models\Education;
+use App\Repository\Admin\EducationRepo;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EducationController extends Controller
 {
@@ -41,21 +43,11 @@ class EducationController extends Controller
      */
     public function store(EducationRequest $request)
     {
-//        dd($request);
-        $image = $request->file('image')->getClientOriginalName();
 
-        Education::create([
-            'image' => $image,
-            'title' => $request->title,
-            'category_id' => $request->category_id,
-            'content' => $request->contents,
-        ]);
+        EducationRepo::save($request->all());
 
-        $destination_path = getcwd() . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'educations' . DIRECTORY_SEPARATOR;
-        $targetFile = $destination_path . basename($image);
-        move_uploaded_file($request->file('image')->getPathname(), $targetFile);
-
-        return to_route('educations.index')->with('alert_s', 'Berhasil menambahkan Edukasi');
+        return to_route('educations.index')
+            ->with('alert_s', 'Berhasil menambahkan artikel');
     }
 
     /**
@@ -86,7 +78,7 @@ class EducationController extends Controller
         $category = Category::all();
         return view('pages.education.edit', [
             'title' => 'Edit Education',
-            'educations' => $education,
+            'education' => $education,
             'categories' => $category
         ]);
     }
@@ -96,7 +88,10 @@ class EducationController extends Controller
      */
     public function update(EducationRequest $request, Education $education)
     {
+        EducationRepo::save($request->all(), $education);
 
+        return to_route('educations.index')
+            ->with('alert_s', 'Berhasil mengupdate artikel');
     }
 
     /**
@@ -104,6 +99,7 @@ class EducationController extends Controller
      */
     public function destroy(Education $education)
     {
+        Storage::disk('public')->delete($education->image);
         $education->delete();
         return $this->success(Education::all(), message: 'Berhasil menghapus Artikel');
     }

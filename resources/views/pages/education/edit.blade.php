@@ -16,7 +16,7 @@
             </div><!-- End Page Title -->
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('educations.update', $educations->id) }}" method="post">
+                    <form action="{{ route('educations.update', $education->id) }}" enctype="multipart/form-data" method="post">
                         @method('PUT')
                         @include('pages.education.form')
                     </form>

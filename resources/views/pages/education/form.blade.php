@@ -1,31 +1,17 @@
 @php
-    $education = $educations ?? null;
+    $education = isset($education) ? $education : null;
 @endphp
 
 @csrf
             <div class="row mb-3" style="margin-left: 10px; margin-top: 15px">
-                <div class="col-sm-4">
-                    <div  class="upload-container" style="text-align: center; display: flex; justify-content: center; align-items: center;">
-                            @if($education)
-                                <div class="upload-button-edit" onclick="document.getElementById('image').click()" >
-                                    <img src="/assets/educations/{{$education?->image}}"  id="previewImg" style="max-width: 100%; max-height: 100%; height: auto;">
-                                    <input type="hidden" id="inputImg" name="inputImg" >
-                                    <input type="file" class="@error('image') is-invalid @enderror" id="image" name="image" accept="image/jpeg" style="display:none" onchange="handleFileEdit(this)" >
-                                </div>
-                            @else
-                                <div class="upload-button" onclick="document.getElementById('image').click()">
-                                    <div class="mb-10">
-                                        <i class="bi bi-cloud-upload" style="font-size: 48px;"></i>
-                                        <h5 style="margin-top: 10px;">Unggah Foto</h5>
-                                    </div>
-                                    <input class=" @error('image') is-invalid @enderror" type="file" id="image" name="image" accept="image/jpeg" style="display:none" onchange="handleFileUpload(this)"/>
-                                </div>
-                            @endif
-                    </div>
+                <div class="col-sm-4" style="margin-top: 15px">
+                    <label class="image-preview" for="image" style="background-image: url('{{ Storage::url($education?->image) }}')">
+                        <small>Klik untuk {{ $education ? 'mengganti' : 'mengunggah' }} foto</small>
+                        <input type="file" name="image" id="image" class="d-none " accept="image/*">
+                    </label>
+
                     @error('image')
-                    <div class="invaid-feedback" style="text-align: center; margin-top: 70px">
-                        <small class="text-danger">{{ $message }}</small>
-                    </div>
+                    <small class="text-danger">{{ $message }}</small>
                     @enderror
                 </div>
 
@@ -58,9 +44,9 @@
                         @enderror
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control  @error('contents') is-invalid @enderror"  id="contents" name="contents" style="height: 120px">{{ $education? $education->content : '' }}</textarea>
-                        <label for="contents">Contents</label>
-                        @error('contents')
+                        <textarea class="form-control  @error('content') is-invalid @enderror"  id="content" name="content" style="height: 120px">{{ $education? $education->content : '' }}</textarea>
+                        <label for="content">Contents</label>
+                        @error('content')
                         <div class="invaid-feedback">
                             <small class="text-danger">{{ $message }}</small>
                         </div>
@@ -76,46 +62,17 @@
 @push('script')
     <script>
 
+        $('#image').on('change', function() {
+            const preview = $(this).parent();
+            const file = this.files[0];
+            const reader = new FileReader();
 
-        let currentImage = null;
-        function handleFileUpload(input) {
-            const file = input.files[0];
-            const uploadButton = document.querySelector('.upload-button');
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    if (currentImage) {
-                        currentImage.parentNode.removeChild(currentImage);
-                    }
-                    const newImage = document.createElement('img');
-                    newImage.setAttribute('id', 'previewImage');
-                    newImage.setAttribute('src', e.target.result);
-                    newImage.setAttribute('style', 'max-width: 100%; max-height: 100%; margin-top: 10px;');
-                    input.parentNode.appendChild(newImage);
-                    currentImage = newImage;
-                    uploadButton.style.backgroundColor = '#fff';
-                    uploadButton.style.border = '0px';
-                    uploadButton.querySelector('h5').style.display = 'none';
-                    uploadButton.querySelector('i').style.display ='none';
-                };
-                reader.readAsDataURL(file);
+            reader.onload = function(e) {
+                preview.css('background-image', `url('${e.target.result}')`);
             }
-        }
 
-        //handle edit
-        //img on edit article
-        let currentImage2 = document.getElementById('previewImg'); // Mengambil elemen gambar saat ini
-        function handleFileEdit(input) {
-            const file = input.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // Setel atribut src elemen gambar sesuai dengan file yang dipilih
-                    currentImage2.setAttribute('src', e.target.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        }
+            reader.readAsDataURL(file);
+        });
 
     </script>
 @endpush

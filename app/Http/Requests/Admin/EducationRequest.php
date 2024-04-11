@@ -21,11 +21,15 @@ class EducationRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'image' => 'required',
-            'title' => 'required|string',
+        $rules = [
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            'contents' => 'required'
         ];
+
+        if ($this->isMethod('POST'))
+            $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
+
+        return $rules;
     }
 }
