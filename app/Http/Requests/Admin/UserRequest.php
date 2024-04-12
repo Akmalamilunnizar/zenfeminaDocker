@@ -32,6 +32,9 @@ class UserRequest extends FormRequest
         if($this->getMethod() != 'POST')
             $rules['password'] = 'nullable|size8';
 
+        if($this->getMethod() == 'POST')
+            $rules['email'] = 'required|unique:users,email';
+
         return $rules;
     }
 

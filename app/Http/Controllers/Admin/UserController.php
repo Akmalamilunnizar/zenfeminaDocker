@@ -32,14 +32,6 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:users,email'
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
         $user = User::create([
             'username' => $request->username,
             'email' => $request->email,
