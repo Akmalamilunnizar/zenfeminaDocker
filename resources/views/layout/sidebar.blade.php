@@ -72,6 +72,13 @@
                 </a>
             </li>
 
+            <li class="sidebar-item @yield('category')">
+                <a href="{{route('categories.index')}}"  class='sidebar-link'>
+                    <i class="bi bi-card-list"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
             <li class="sidebar-title">Account</li>
 
             <li class="sidebar-item ">

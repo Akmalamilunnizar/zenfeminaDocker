@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class EducationResource extends JsonResource
+class ReminderResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,11 @@ class EducationResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'category_id' => $this->category_id,
-            'title' => $this->title,
-            'content' => $this->content,
-            'image' => $this->image,
-            'on_clicked' => $this->on_clicked
+            'user_id' => $this->user_id,
+            'type' => $this->type,
+            'day' => $this->day,
+            'time' => $this->time,
+            'is_on' => $this->is_on
         ];
     }
 }

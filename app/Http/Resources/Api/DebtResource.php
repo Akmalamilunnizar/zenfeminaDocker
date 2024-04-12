@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DashboardResource extends JsonResource
+class DebtResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,10 @@ class DashboardResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'date' => $this->date,
             'type' => $this->type,
-            'cycle_length' => $this->cycle_length,
-            'period_length' => $this->period_length,
-            'start_date' => $this->start_date,
-            'end_date' => $this->end_date
+            'details' => $this->details,
+            'is_done' => $this->is_done
         ];
     }
 }
