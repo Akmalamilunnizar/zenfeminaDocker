@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-4">
                         <div>
-                            <a href="{{route('users.create')}}" class="btn btn-primary">New User</a>
+                            <button class="btn btn-primary" id="newUser" name="newUser">New User</button>
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -31,24 +31,7 @@
                                 <th>options</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            @foreach($users as $user)
-                                <tr>
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$user->username}}</td>
-                                        <td>{{$user->email}}</td>
-                                        <td>{{$user->age}}</td>
-                                        <td class="d-flex gap-2">
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-success">Edit</a>
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button  type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                            </form>
-                                        </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -57,8 +40,5 @@
     </div>
 @endsection
 
-@push('script')
-    <script>
-        $('#users-table').DataTable();
-    </script>
-@endpush
+@include('components.user_modal')
+@include('components.user_js')

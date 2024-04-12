@@ -39,8 +39,20 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         ->only('index');
 
     //user
-    Route::resource('users', UserController::class)
-        ->except('show');
+    Route::prefix('users')
+        ->name('users.')
+        ->controller(UserController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('store', 'store')->name('store');
+            Route::match(['PUT', 'PATCH'], '{user}/update', 'update')->name('update');
+
+            Route::get('datatables', 'datatables')->name('datatables');
+            Route::get('{user}', 'show')->name('show');
+
+            Route::delete('{user}', 'destroy')->name('destroy');
+        });
+//    Route::resource('users', UserController::class)
+//        ->except('show');
 
     //education
     Route::prefix('educations')->name('educations.')->controller(EducationController::class)->group(function () {

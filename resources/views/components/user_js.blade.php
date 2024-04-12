@@ -1,41 +1,43 @@
 @push('script')
     <script>
-        const categoryTable = $('#categories-table').DataTable({
+        const userTable = $('#users-table').DataTable({
             serverSide: true,
             rendering: true,
-            ajax: '{{ route('categories.datatables') }}',
+            ajax: '{{ route('users.datatables') }}',
             columns: [
                 {data: 'DT_RowIndex', orderable: false, searchable: false,},
-                {data: 'name', name: 'name'},
+                {data: 'username', name: 'username'},
+                {data: 'email', name: 'email'},
+                {data: 'age', name: 'age'},
                 {data: 'action', orderable: false, searchable: false},
             ],
         });
 
 
-        const categoryModal = new bootstrap.Modal('#category-modal');
+        const userModal = new bootstrap.Modal('#user-modal');
         let editID = 0;
 
         function fillForm() {
             $.ajax({
-                url: `/categories/${editID}`,
+                url: `/users/${editID}`,
                 success: (res) => fillFormdata(res.data),
             });
         }
 
         function saveItem() {
             const url = editID != 0 ?
-                `/categories/${editID}/update` :
-                `/categories/store`;
+                `/users/${editID}/update` :
+                `/users/store`;
 
             const method = editID != 0 ? 'PUT' : 'POST';
 
             $.ajax({
                 url,
                 method,
-                data: $('#category-form').serialize(),
+                data: $('#user-form').serialize(),
                 success(res) {
-                    categoryTable.ajax.reload();
-                    categoryModal.hide();
+                    userTable.ajax.reload();
+                    userModal.hide();
 
 
                     Swal.fire({
@@ -61,10 +63,10 @@
 
         function deleteItem(id) {
             $.ajax({
-                url: `/categories/${id}`,
+                url: `/users/${id}`,
                 method: 'DELETE',
                 success(res) {
-                    categoryTable.ajax.reload();
+                    userTable.ajax.reload();
 
                     Swal.fire({
                         icon: 'success',
@@ -82,37 +84,37 @@
             });
         }
 
-        $('#category-modal').on('show.bs.modal', function (event) {
-            $('#category-modal-title').text(editID ? 'Edit Kategori' : 'Tambah Kategori');
+        $('#user-modal').on('show.bs.modal', function (event) {
+            $('#user-modal-title').text(editID ? 'Edit Data Pengguna' : 'Tambah Data Pengguna');
             if(editID != 0)
                 fillForm();
         });
 
-        $('#category-modal').on('hidden.bs.modal', function (event) {
+        $('#user-modal').on('hidden.bs.modal', function (event) {
             editID = 0;
 
             removeFormErrors();
-            $('#category-form').trigger('reset');
+            $('#user-form').trigger('reset');
         });
 
-        $('#category-form').submit(function(e) {
+        $('#user-form').submit(function(e) {
             e.preventDefault();
 
             removeFormErrors();
             saveItem();
         });
 
-        $('#categories-table').on('click', '.btn-edit', function(e) {
+        $('#users-table').on('click', '.btn-edit', function(e) {
             editID = this.dataset.id;
-            categoryModal.show();
+            userModal.show();
         });
 
-        $('#newCategory').on('click', function (e) {
-            categoryModal.show();
+        $('#newUser').on('click', function (e) {
+            userModal.show();
         });
 
 
-        $('#categories-table').on('click', '.btn-delete', function(e) {
+        $('#users-table').on('click', '.btn-delete', function(e) {
             Swal.fire({
                 icon: 'question',
                 text: 'Apakah anda yakin?',

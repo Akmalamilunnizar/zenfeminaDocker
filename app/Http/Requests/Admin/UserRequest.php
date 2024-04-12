@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Exceptions\Api\FailedValidation;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -21,10 +23,20 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'username' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|size:8'
         ];
+
+        if($this->getMethod() != 'POST')
+            $rules['password'] = 'nullable|size8';
+
+        return $rules;
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        return throw new FailedValidation($validator->errors());
     }
 }
