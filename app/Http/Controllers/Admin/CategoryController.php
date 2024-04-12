@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
+use App\Http\Resources\Admin\CategoryResource;
 use App\Models\Category;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
@@ -16,73 +18,75 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         return view('pages.category.index', [
-            'title' => 'categories'
+            'title' => 'categories',
+            'categories' => $categories
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CategoryRequest $request)
     {
-        //
+        $category = Category::create($request->validated());
+
+        return $this->success(
+            CategoryResource::make($category),
+            'Berhasil menambahkan Kategori'
+        );
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        return $this->success(
+            CategoryResource::make($category),
+            'Berhasil mengambil detail Kategori'
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        $category->update($request->validated());
+
+        return $this->success(
+            CategoryResource::make($category),
+            'Berhasil mengubah Kategori'
+        );
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return $this->success(
+            message: 'Berhasil menghapus barang'
+        );
     }
 
     public function datatables()
     {
         return datatables(Category::query())
             ->addIndexColumn()
-            ->addColumn('action', fn ($item) => view('pages.category.action', compact('category')))
+            ->addColumn('action', fn ($category) => view('pages.category.action', compact('category')))
             ->toJson();
     }
 
     public function json()
     {
-        $category = Category::all();
+        $categories = Category::all();
 
         return $this->success(
-            ItemResource::collection($items),
+            CategoryResource::collection($categories),
             'Berhasil mengambil semua data'
         );
     }

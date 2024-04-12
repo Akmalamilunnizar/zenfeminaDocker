@@ -55,5 +55,16 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
     });
 
     //category
-    Route::resource('categories', CategoryController::class);
+    Route::prefix('categories')
+        ->name('categories.')
+        ->controller(CategoryController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('store', 'store')->name('store');
+            Route::match(['PUT', 'PATCH'], '{category}/update', 'update')->name('update');
+
+            Route::get('datatables', 'datatables')->name('datatables');
+            Route::get('{category}', 'show')->name('show');
+
+            Route::delete('{category}', 'destroy')->name('destroy');
+        });
 });
