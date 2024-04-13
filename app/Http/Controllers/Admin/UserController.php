@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Http\Resources\Admin\UserResource;
 use App\Models\User;
+use App\Repository\Admin\UserRepo;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -32,12 +33,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-        $user->assignRole('user');
+        $user = UserRepo::create($request->validated());
 
         return $this->success(
             UserResource::make($user),
@@ -61,16 +57,14 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $user = UserRepo::update($user, $request->validated());
+
         return $this->success(
             UserResource::make($user),
             'Berhasil mengubah Data pengguna'
         );
     }
+
 
     /**
      * Remove the specified resource from storage.
