@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
+    @include('components.user_modal')
 @endsection
 
-@include('components.user_modal')
 @include('components.user_js')

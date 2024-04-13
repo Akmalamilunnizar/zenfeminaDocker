@@ -34,8 +34,8 @@
             </div>
         </div>
     </div>
+    @include('components.category_modal')
 @endsection
 
-@include('components.category_modal')
 @include('components.category_js')
 
