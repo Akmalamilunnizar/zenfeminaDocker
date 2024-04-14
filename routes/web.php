@@ -79,4 +79,5 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 
             Route::delete('{category}', 'destroy')->name('destroy');
         });
+
 });
