@@ -29,12 +29,6 @@ Route::controller(AuthController::class)->middleware('guest')->group(function() 
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
     //dashboard
-    Route::get('/dashboard', function (){
-        return view('pages.dashboard', [
-            'title' => 'Dashboard'
-        ]);
-    })->name('dashboard');
-
     Route::resource('dashboard', DashboardController::class)
         ->only('index');
 

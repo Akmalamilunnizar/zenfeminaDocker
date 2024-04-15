@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Education;
 use App\Models\User;
+use App\Repository\Admin\DashboardRepo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -26,12 +29,17 @@ class DashboardController extends Controller
         $old = User::query()->selectRaw('CAST(AVG(DATEDIFF(CURDATE(), birthDate) / 365) AS UNSIGNED) AS old')
             ->first();
 
+        $age = DashboardRepo::chart('age');
+        $total = DashboardRepo::chart('total');
+
         return view('pages.dashboard', [
-            'title' => 'Dashboard',
+            'title' => 'DashboardRepo',
             'adminCount' => $adminCount,
             'userCount' => $userCount,
             'eduCount' => $eduCount,
-            'old' => $old
+            'old' => $old,
+            'age' => $age,
+            'total' => $total
         ]);
     }
 

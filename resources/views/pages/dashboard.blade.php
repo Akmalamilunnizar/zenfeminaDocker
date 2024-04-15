@@ -103,8 +103,8 @@
             new ApexCharts(document.querySelector("#reportsChart"), {
                 series: [ {
                     name: 'Customers',
-                    data: ["5", "7", "6", "3", "2", "7", "9"]
-                    {{--data: <?php echo json_encode($data["jumlah"]); ?>--}}
+                    data: ["5", "7", "6", "3", "2"]
+                    {{--data: {{$total}}--}}
                 }],
                 chart: {
                     height: 350,
@@ -134,8 +134,8 @@
                     width: 2
                 },
                 xaxis: {
-                    categories: ["3", "6", "12", "8", "2", "9", "14"],
-                    {{--categories: <?php echo json_encode($data["usia"]); ?>--}}
+                    categories: ["3", "6", "12", "8", "2"],
+                    {{--categories: {{$age}},--}}
                     title: {
                         text: 'Usia' // Tambahkan keterangan sumbu x di sini
                     }
