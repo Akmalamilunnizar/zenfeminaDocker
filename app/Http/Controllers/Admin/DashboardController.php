@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $total = DashboardRepo::chart('total');
 
         return view('pages.dashboard', [
-            'title' => 'DashboardRepo',
+            'title' => 'Dashboard',
             'adminCount' => $adminCount,
             'userCount' => $userCount,
             'eduCount' => $eduCount,
