@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
+use App\Http\Resources\Admin\UserResource;
 use App\Models\User;
+use App\Repository\Admin\UserRepo;
+use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    use ApiResponser;
     /**
      * Display a listing of the resource.
      */
@@ -25,46 +29,27 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view('pages.user.create', [
-            'title' => 'new user'
-        ]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(UserRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|unique:users,email'
-        ]);
+        $user = UserRepo::create($request->validated());
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $user = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-        $user->assignRole('user');
-        return to_route('users.index')->with('alert_s', 'Berhasil menambahkan user');
+        return $this->success(
+            UserResource::make($user),
+            'Berhasil menambahkan Data Pengguna'
+        );
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      */
-    public function edit(User $user)
+    public function show(User $user)
     {
-        return view('pages.user.edit', [
-            'title' => 'Edit user',
-            'user' => $user
-        ]);
+        return $this->success(
+            UserResource::make($user),
+            'Berhasil mengambil detail user'
+        );
     }
 
     /**
@@ -72,13 +57,14 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
-        return to_route('users.index')->with('alert_s', "Berhasil mengubah data user");
+        $user = UserRepo::update($user, $request->validated());
+
+        return $this->success(
+            UserResource::make($user),
+            'Berhasil mengubah Data pengguna'
+        );
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -86,6 +72,31 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return back()->with('alert_s', "Berhasil menghapus user");
+        return $this->success(
+            message: 'Berhasil menghapus Data Pengguna'
+        );
+    }
+
+    public function datatables()
+    {
+        return datatables(User::with('roles')->get()->filter(
+                fn ($user) => $user->roles->where('name', 'user')->toArray()
+            ))
+            ->addIndexColumn()
+            ->addColumn('age', function($user) {
+                return $user->age;
+            })
+            ->addColumn('action', fn ($user) => view('pages.user.action', compact('user')))
+            ->toJson();
+    }
+
+    public function json()
+    {
+        $users = User::all();
+
+        return $this->success(
+            UserResource::collection($users),
+            'Berhasil mengambil semua data'
+        );
     }
 }

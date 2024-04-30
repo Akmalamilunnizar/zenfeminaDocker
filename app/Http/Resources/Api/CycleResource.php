@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Api;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class UserResource extends JsonResource
+class CycleResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'username' => $this->username,
-            'email' => $this->email,
-            'birthDate' => $this->whenNotNull($this->birthDate),
-            'token' => $this->whenNotNull($this->token)
+            'type' => $this->type,
+            'cycle_length' => $this->cycle_length,
+            'period_length' => $this->period_length,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date
         ];
     }
 }

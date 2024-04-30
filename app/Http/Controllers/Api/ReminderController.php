@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ReminderRequest;
-use App\Http\Resources\ReminderResource;
+use App\Http\Resources\Api\ReminderResource;
 use App\Models\Reminder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

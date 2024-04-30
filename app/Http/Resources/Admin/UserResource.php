@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class DebtResource extends JsonResource
+class UserResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,8 @@ class DebtResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'date' => $this->date,
-            'type' => $this->type,
-            'details' => $this->details,
-            'is_done' => $this->is_done
+            'username' => $this->username,
+            'email' => $this->email
         ];
     }
 }

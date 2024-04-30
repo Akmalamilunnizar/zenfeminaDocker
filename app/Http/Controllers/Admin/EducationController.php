@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\EducationRequest;
 use App\Models\Category;
 use App\Models\Education;
+use App\Repository\Admin\EducationRepo;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EducationController extends Controller
 {
@@ -29,15 +31,23 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view('pages.education.create', [
+            'title' => 'new Education',
+            'categories' => $category
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EducationRequest $request)
     {
-        //
+
+        EducationRepo::save($request->all());
+
+        return to_route('educations.index')
+            ->with('alert_s', 'Berhasil menambahkan artikel');
     }
 
     /**
@@ -68,7 +78,7 @@ class EducationController extends Controller
         $category = Category::all();
         return view('pages.education.edit', [
             'title' => 'Edit Education',
-            'educations' => $education,
+            'education' => $education,
             'categories' => $category
         ]);
     }
@@ -78,7 +88,10 @@ class EducationController extends Controller
      */
     public function update(EducationRequest $request, Education $education)
     {
-        //
+        EducationRepo::save($request->all(), $education);
+
+        return to_route('educations.index')
+            ->with('alert_s', 'Berhasil mengupdate artikel');
     }
 
     /**
@@ -86,6 +99,7 @@ class EducationController extends Controller
      */
     public function destroy(Education $education)
     {
+        Storage::disk('public')->delete($education->image);
         $education->delete();
         return $this->success(Education::all(), message: 'Berhasil menghapus Artikel');
     }
@@ -99,6 +113,5 @@ class EducationController extends Controller
             'educations' => $education,
             'length' => $length
         ]);
-
     }
 }

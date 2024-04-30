@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CycleRequest;
-use App\Http\Resources\CycleResource;
+use App\Http\Resources\Api\CycleResource;
 use App\Models\Cycle;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CycleController extends Controller

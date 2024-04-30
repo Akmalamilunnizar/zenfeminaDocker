@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CategoryRequest;
 use App\Http\Requests\Api\EducationRequest;
-use App\Http\Resources\CategoryResource;
-use App\Http\Resources\EducationResource;
+use App\Http\Resources\Api\CategoryResource;
+use App\Http\Resources\Api\EducationResource;
 use App\Models\Category;
 use App\Models\Education;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class EducationController extends Controller
 {

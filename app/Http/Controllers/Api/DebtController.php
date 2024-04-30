@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\DebtRequest;
-use App\Http\Resources\DebtResource;
+use App\Http\Resources\Api\DebtResource;
 use App\Models\Debt;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
