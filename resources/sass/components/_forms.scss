@@ -50,6 +50,14 @@
                 right: 0;
             }
         }
+        //buat ini tooglenya
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 10px; /* Sesuaikan dengan kebutuhan */
+            transform: translateY(-50%);
+        }
+        
         .form-control {            
             &:focus ~ .form-control-icon {
                 i, svg {
@@ -77,6 +85,19 @@
                     vertical-align: sub;
                 }
             }
+        }
+        .form-control-icon2 {
+            position: absolute;
+            padding: 0 .6rem;
+            i, svg {
+                width: 1.2rem;
+                color: $input-placeholder-color;
+                font-size: 1.2rem;
+                &:before {
+                    vertical-align: sub;
+                }
+            }
+            right: 50px;
         }
 
     }
