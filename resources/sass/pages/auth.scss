@@ -12,21 +12,27 @@ body {
         background:  url(../../static/images/bg/4853433.png), $page-auth-right-bg;
     }
     #auth-left {
-        padding: 5rem;
+        padding: 2rem;
+         position: relative;
         
         .auth-title {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 0rem;
+            margin-top: 7rem;
         }
         .auth-subtitle {
-            font-size: 1.7rem;
-            line-height: 2.5rem;
+            font-size: 1.2rem;
+            line-height: 1.3rem;
             color: #a8aebb;
         }
         .auth-logo {
-            margin-bottom: 7rem;
+            margin-bottom: 5rem;
             img {
-                height: 5rem;
+                height: 4rem;
+                position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1; /* Pastikan logo tampil di atas konten lain */
             }
         }
         @media screen and (max-width: 1399.9px) {

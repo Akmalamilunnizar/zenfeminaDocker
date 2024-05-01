@@ -6,10 +6,10 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="index.html"><img src="{{ asset('assets/static/images/logo/logo_zenfemina.svg') }}" alt="Logo"></a>
+                        <a href="index.html"><img src="{{ asset('assets/static/images/logo/logo_zenfemina.svg') }}" alt="Logo" class="logo-kiri-atas"></a>
                     </div>
-                    <h1 class="auth-title">Log in.</h1>
-                    <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                    <h1 class="auth-title">Sign In</h1>
+                    <p class="auth-subtitle mb-5">Silakan masuk dengan menggunakan email dan password yang Anda daftarkan</p>
 
                     <form action="/store" method="post">
                         @csrf
@@ -43,7 +43,8 @@
                 </div>
             </div>
             <div class="col-lg-7 d-none d-lg-block">
-                <div id="auth-right">
+                <div id="auth-right" style="position: relative;">
+                    <img src="{{ asset('assets/static/images/logo/hijab1.png') }}" alt="Background Image" class="auth-background-image"  style="position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); max-width: 300vw; max-height: 300vh;">
                 </div>
             </div>
         </div>
