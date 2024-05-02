@@ -1,0 +1,460 @@
+[33mcommit fcd5dd9c2c66e002ea6c3e36b934aafa4615bf90[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 219e760 93eaf6d
+Author: rendy <rendyshu123@gmail.com>
+Date:   Wed May 1 21:28:52 2024 +0700
+
+    Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+
+[33mcommit 219e76068e2d5637874bbcb139b5527da9d4381a[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Wed May 1 21:28:24 2024 +0700
+
+    style: Update login form and compile SCSS to CSS
+
+[33mcommit 93eaf6d01a15f2c08347b4426c54c0f044139be5[m
+Merge: a8eb261 0f6a994
+Author: khairunnisaalallah <124749527+khairunnisaalallah@users.noreply.github.com>
+Date:   Tue Apr 30 09:24:33 2024 +0700
+
+    update login form
+
+[33mcommit a8eb261c1a3a8fc86a9f5c0f673f369dadfbccef[m
+Author: khairunnisaalallah <124749527+khairunnisaalallah@users.noreply.github.com>
+Date:   Tue Apr 30 09:19:38 2024 +0700
+
+    update: login form
+
+[33mcommit 0f6a994538efda8bb62d5ca8ea8ccb25ad3d5bbe[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 15 13:23:41 2024 +0700
+
+    fix: dashboard's title
+
+[33mcommit 53b0dbc2558ed4a12296c08b0e186650130e5e68[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 15 11:20:37 2024 +0700
+
+    feat: dashboard chart
+
+[33mcommit 19f0510779bd6fb1a2a15ac2eb02ae224561fe91[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Apr 14 20:41:53 2024 +0700
+
+    style: dashboard chart
+
+[33mcommit c137d1cde145467aafefcf26bf6be9847d013cc9[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sat Apr 13 10:53:42 2024 +0700
+
+    fix: modal layout
+
+[33mcommit 0cf582db6ee8cb1e4f527db42390a4d84c8ac9c2[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sat Apr 13 10:49:26 2024 +0700
+
+    fix: user update condition
+
+[33mcommit 3806b088be797e147ea337d32052b50c3fe6d56c[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 12 22:30:04 2024 +0700
+
+    fix: add some condition on userRequest
+
+[33mcommit f2179220e12d35acf3272be2b4da0950962f3f8f[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 12 22:26:54 2024 +0700
+
+    chore: delete unused views
+
+[33mcommit 082a76b54aaeb2cb6462ecb7f54bca1c2f527882[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 12 22:22:41 2024 +0700
+
+    fix: CRUD user
+
+[33mcommit 899beb107fdf95e05c3c488434f3789a73473549[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 12 17:33:41 2024 +0700
+
+    feat: CRUD categories
+
+[33mcommit cd1cf4b2b8cecc788921e3cadfaf6ab6606df10c[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 12 09:22:20 2024 +0700
+
+    chore: rename some files
+
+[33mcommit 5854111b71b724e5525f072bc238b319f31de829[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Apr 11 22:31:16 2024 +0700
+
+    feat: CRUD educations
+
+[33mcommit bacc1665df74cc45fd3b8cdf7f712dffa858bedb[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Tue Apr 9 06:25:22 2024 +0700
+
+    style: add max height education
+
+[33mcommit acdcb75ef0d1803fab1336952ce1567005fde92d[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 8 23:21:24 2024 +0700
+
+    feat: upload educations
+
+[33mcommit 0956b50b7fcaf9d8b3e995a17082f30411ed82d0[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 8 22:57:27 2024 +0700
+
+    refactor: fix education table
+
+[33mcommit 5203b238da26d0a7e963c1668e43512bad78cbf8[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Apr 7 16:58:46 2024 +0700
+
+    style: edit form layout and design
+
+[33mcommit da988e01b3070bc458144123483dac5de31db24b[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 5 10:38:25 2024 +0700
+
+    style: add page title
+
+[33mcommit fd286ebc1289958443c2697730bcb1c712bf207a[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 5 10:33:52 2024 +0700
+
+    chore: remove unused code
+
+[33mcommit 45340e7c125d4dd930b3e969137caf62abc06e96[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 5 10:20:04 2024 +0700
+
+    feat: delete educations
+
+[33mcommit 9cc0e71f1fbfccc66cebb2fbaf725bef3015564c[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Apr 5 06:38:40 2024 +0700
+
+    feat: search education
+
+[33mcommit facd75713b19492a0b56585ecc08f78bc3867bba[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Apr 4 12:30:44 2024 +0700
+
+    feat: education index
+
+[33mcommit 60403382778965269515293c682bd81287c98432[m
+Merge: 1ddad00 b5cf35c
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Apr 4 12:28:45 2024 +0700
+
+    Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+
+[33mcommit 1ddad009b2298b03a9a5af40795c5277dac01ffb[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Apr 4 12:27:47 2024 +0700
+
+    feat: cycle api base
+
+[33mcommit b5cf35c841b17862039c016aa24b66bada84cfb3[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Thu Apr 4 11:33:12 2024 +0700
+
+    add: login design1
+
+[33mcommit df15211a12cea47b9696ab9f9d218b55ad85d975[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 1 14:49:07 2024 +0700
+
+    refactor: add user condition
+
+[33mcommit 158ac734c2ea9dfd7d4f9d9e5c892357e2784b72[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 1 13:27:24 2024 +0700
+
+    chore: delete unused field on istihadhah table
+
+[33mcommit 3a6fc4ce2ea7bd713bcae4d09550880b5ac53b02[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 1 12:06:07 2024 +0700
+
+    feat: dashboard api
+
+[33mcommit 9065bbced395d51846ed24a2d489d192cde5084d[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 1 10:47:54 2024 +0700
+
+    chore: change end_date to be nullable
+
+[33mcommit 0fcce181960586f2a621d722276532d8244f473b[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Apr 1 08:11:51 2024 +0700
+
+    style: add some dashboard component
+
+[33mcommit 5568b57023dac842eef55a012b58c5de98818f18[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Mar 28 14:19:36 2024 +0700
+
+    refactor: change authenticatable's package
+
+[33mcommit 74bcdd8776b60e2245458521ea6355ec80d1be9a[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 27 22:58:14 2024 +0700
+
+    style: change to light mode
+
+[33mcommit 20f4780b42fed6a272d6ce3c74e7825472d7a289[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 27 22:07:59 2024 +0700
+
+    feat: reminder api
+
+[33mcommit dfe73b452c124a8d52db03323df806adf6237c8e[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 27 21:27:01 2024 +0700
+
+    fix: less user condition
+
+[33mcommit cd0a11ac81198833669ebd3575681213a8d05b60[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 27 21:25:50 2024 +0700
+
+    delete: unused models
+
+[33mcommit d2b7a7d4606bf52a4d48cbd4a9a85c892ff2e29b[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 27 14:00:27 2024 +0700
+
+    refactor: add trigger after delete user
+
+[33mcommit 1e8040b053ee7ac1f18a3ad6817c9702dbcae6e7[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 27 08:32:33 2024 +0700
+
+    refactor: delete some unused function
+
+[33mcommit 4bf60592b1c846c713cb44fa7c4ab6e8ebcded9b[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Tue Mar 26 13:26:25 2024 +0700
+
+    feat: education apo
+
+[33mcommit 20fee8a8e1d6c27761df398f10a994c38e82ce57[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Mar 22 21:08:34 2024 +0700
+
+    fix: education's table
+
+[33mcommit 7061d07d2d39cbea212fef532cbc68f0b6625eec[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Mar 22 16:01:22 2024 +0700
+
+    fix: change table's name to singular
+
+[33mcommit 28993663f16d9efaa2b8f6381d26eb23dd87cc1d[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Mar 21 15:23:32 2024 +0700
+
+    feat: debt api
+
+[33mcommit 8b715483102f2340086bfde3821cde386d2e62d4[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Mar 21 01:18:07 2024 +0700
+
+    feat: profile api
+
+[33mcommit e89fc9395354d3083b5accdbfd01794e5d967e3e[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 20 23:53:11 2024 +0700
+
+    refactor: user model implement authenticatable
+
+[33mcommit f40560053571fc981b55398383afcd63b9afac76[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 20 23:37:41 2024 +0700
+
+    chore: change destroy controller
+
+[33mcommit 6c9df4393309a69c111f35a37cbe09f4b8aea010[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 20 14:23:10 2024 +0700
+
+    feat: login api
+
+[33mcommit 6b68dcd870851c34db5de191655939a960e78b30[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 20 13:46:15 2024 +0700
+
+    feat: register api
+
+[33mcommit 5860db83c428b2d26b71ea1ade5681d39ad6cfa3[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 20 09:33:06 2024 +0700
+
+    refactor:login using email instead of username
+
+[33mcommit 5e7fecbc59fcfb986052bfc81d53aa3bee3c1c9c[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 20 09:07:00 2024 +0700
+
+    refactor: add token field on user table
+
+[33mcommit 264d9310b0a20c76e4b65e79fec00965c983efba[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Tue Mar 19 00:00:09 2024 +0700
+
+    refactor: change user's table role
+
+[33mcommit 08d934174083e2ddb5de680039776a1969eda3d4[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Mar 18 23:53:05 2024 +0700
+
+    refactor: add user's role
+
+[33mcommit 8c348c085d682916ed747114ed88efa2c3fdffce[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Mar 18 16:03:08 2024 +0700
+
+    add: guest middleware
+
+[33mcommit 185e7ac8a9a8c57961507f97c04d663ca8451c1e[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Mar 18 14:38:46 2024 +0700
+
+    add: role permission
+
+[33mcommit 6dda2fa14862058476043b5d56237864cf49e6e5[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Mon Mar 18 13:51:11 2024 +0700
+
+    refactor: password access on admin
+
+[33mcommit 9d74509f732e545fe4462c1aba05b55156cd74c7[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Mar 17 20:12:55 2024 +0700
+
+    feat: CRUD users
+
+[33mcommit 506a84e1d7ca4709d8e7d557faaecc2a3feb80a8[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Fri Mar 15 11:26:03 2024 +0700
+
+    feat: login
+
+[33mcommit 9b3af6bd628df792dd28d942cc8cb27219dad155[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Mar 14 21:04:28 2024 +0700
+
+    chore: change email to be unique
+
+[33mcommit c5b45b4f66ba04052a82fd8cb79c5b0405b516f5[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Mar 14 20:38:10 2024 +0700
+
+    add: sidebar and app layout
+
+[33mcommit 63749b4bd71c9b197278b9782c151fc334289796[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Mar 14 12:11:24 2024 +0700
+
+    add: login desain
+
+[33mcommit 30744864ca71ab2496ca147cd6ac7b3f154017b0[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 13 23:54:18 2024 +0700
+
+    chore: responden's form
+
+[33mcommit ef0e3de017bce8acf75fa6d792af5d398909b435[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Mar 13 11:39:32 2024 +0700
+
+    chore: move to models directory
+
+[33mcommit 05f24c6b5fb0d798baff40ea0d4e0186084bfbce[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Sun Mar 3 17:59:19 2024 +0700
+
+    add: model token
+
+[33mcommit 3fe352c6ae1549c75c289e9f96b279fb33b55461[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Sun Mar 3 17:30:42 2024 +0700
+
+    add: Model Education
+
+[33mcommit ae04761438105711e2be416463a9cc55124ef60e[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Sun Mar 3 17:26:34 2024 +0700
+
+    add : model Educations
+
+[33mcommit 088adfc6f5fa4ade4ebfc925e6e40b34a9e3bac6[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Mar 3 14:40:12 2024 +0700
+
+    chore: delete some models
+
+[33mcommit e50ed2a4557d72f385ed9b1a3fec8776f2d1d3a9[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Mar 3 12:44:50 2024 +0700
+
+    add: model's relationships
+
+[33mcommit 02e6172eb44ed8710e32d5e8eac2846b4791711d[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Mar 3 10:45:08 2024 +0700
+
+    add: reminder's trigger
+
+[33mcommit 084453bd07c84bd31307e19b86d8921a04a8ab77[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Mar 3 10:06:01 2024 +0700
+
+    add: category's migration
+
+[33mcommit e3c3ba7fc44c08660b0cd36774c83c2728ecc146[m
+Merge: 0c56ec7 d58f3e8
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Sun Mar 3 09:45:58 2024 +0700
+
+    Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+
+[33mcommit d58f3e88e79f7d52d267f2284b280bbb3649e948[m
+Merge: 848c087 0728406
+Author: rendy <rendyshu123@gmail.com>
+Date:   Sun Mar 3 02:51:34 2024 +0700
+
+    Merge branch 'migration'
+
+[33mcommit 848c0870841da3427c68372afca45853f265c6cd[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Sun Mar 3 02:32:11 2024 +0700
+
+    Pesan commit Anda
+
+[33mcommit 07284060401a5f962e0f6fcf6b48dfd5caf80819[m
+Author: rendy <rendyshu123@gmail.com>
+Date:   Sun Mar 3 02:19:20 2024 +0700
+
+    migration commit2
+
+[33mcommit 0c56ec72628e8b4a89812bd55cbad2ebf2e52d64[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Wed Feb 28 23:32:22 2024 +0700
+
+    add: migrations
+
+[33mcommit 9e6190f490c8eb89b665aee34b65da4369af8eaf[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Tue Feb 27 10:58:11 2024 +0700
+
+    add: user and cycle's migrations
+
+[33mcommit 1307298ec7020be7d0b13c956e45391f17e7e12a[m
+Author: Azza Wafiqurrohmah <wafiqurrohmahazza@gmail.com>
+Date:   Thu Feb 15 08:29:59 2024 +0700
+
+    add: laravel framework
