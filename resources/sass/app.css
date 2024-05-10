@@ -20762,6 +20762,12 @@ body .bi::before, [class^=bi-]::before, [class*=" bi-"]::before {
 .form-group[class*=has-icon-].has-icon-right .form-control-icon {
   right: 0;
 }
+.form-group[class*=has-icon-] .toggle-password {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Sesuaikan dengan kebutuhan */
+  transform: translateY(-50%);
+}
 .form-group[class*=has-icon-] .form-control:focus ~ .form-control-icon i, .form-group[class*=has-icon-] .form-control:focus ~ .form-control-icon svg {
   color: #5A8DEE;
 }
@@ -20784,6 +20790,19 @@ body .bi::before, [class^=bi-]::before, [class*=" bi-"]::before {
   font-size: 1.2rem;
 }
 .form-group[class*=has-icon-] .form-control-icon i:before, .form-group[class*=has-icon-] .form-control-icon svg:before {
+  vertical-align: sub;
+}
+.form-group[class*=has-icon-] .form-control-icon2 {
+  position: absolute;
+  padding: 0 0.6rem;
+  right: 50px;
+}
+.form-group[class*=has-icon-] .form-control-icon2 i, .form-group[class*=has-icon-] .form-control-icon2 svg {
+  width: 1.2rem;
+  color: #adb5bd;
+  font-size: 1.2rem;
+}
+.form-group[class*=has-icon-] .form-control-icon2 i:before, .form-group[class*=has-icon-] .form-control-icon2 svg:before {
   vertical-align: sub;
 }
 .form-group.mandatory .form-label:first-child:after {
