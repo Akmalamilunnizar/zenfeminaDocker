@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\DebtRequest;
 use App\Http\Resources\Api\DebtResource;
 use App\Models\Debt;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class DebtController extends Controller
 {
+    use ApiResponser;
     public function get(DebtRequest $request)
     {
         $user = Auth::user();
@@ -29,7 +31,11 @@ class DebtController extends Controller
             ]), 401);
         }
 
-        return DebtResource::collection($debt);
+//        return DebtResource::collection($debt);
+        return $this->success(
+            DebtResource::collection($debt),
+            "Berhasil mendapatkan data"
+        );
     }
 
     public function add(DebtRequest $request) :JsonResponse
@@ -44,9 +50,9 @@ class DebtController extends Controller
             'user_id' => $user->id
         ]);
 
-        return response()->json([
-            'data' => true
-        ])->setStatusCode(200);
+        return $this->success(
+            message: "Berhasil menambahkan data"
+        );
     }
 
     public function update(Request $request) :JsonResponse
@@ -60,8 +66,8 @@ class DebtController extends Controller
         $debt->is_done = 1;
         $debt->save();
 
-        return response()->json([
-            'data' => true
-        ])->setStatusCode(200);
+        return $this->success(
+            "Berhasil mengubah data"
+        );
     }
 }

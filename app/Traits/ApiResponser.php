@@ -31,10 +31,10 @@ trait ApiResponser
         return response()->json([
             'meta' => [
                 'code' => $code,
-                'status' => 'success',
+                'status' => 1,
                 'message' => $message,
             ],
-            'data' => $data
+            'data' => $data,
         ], $code);
     }
 
@@ -50,10 +50,10 @@ trait ApiResponser
         return response()->json([
             'meta' => [
                 'code' => $code,
-                'status' => 'error',
+                'status' => 0,
                 'message' => $message,
             ],
-            'data' => $data
+            'data' => $data,
         ], $code);
     }
 

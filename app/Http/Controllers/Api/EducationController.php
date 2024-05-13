@@ -9,40 +9,63 @@ use App\Http\Resources\Api\CategoryResource;
 use App\Http\Resources\Api\EducationResource;
 use App\Models\Category;
 use App\Models\Education;
+use App\Traits\ApiResponser;
 use Illuminate\Http\JsonResponse;
 
 class EducationController extends Controller
 {
+    use ApiResponser;
     public function trending()
     {
         $education = Education::orderBy('on_clicked', 'DESC')
             ->limit(4)
             ->get();
-        return EducationResource::collection($education);
+
+        return $this->success(
+            EducationResource::collection($education),
+            "Berhasil mendapatkan data"
+        );
     }
 
     public function allCategory()
     {
         $category = Category::all();
-        return CategoryResource::collection($category);
+//        return CategoryResource::collection($category);
+
+        return $this->success(
+            CategoryResource::collection($category),
+            "Berhasil mendapatkan data"
+        );
     }
 
     public function getAll()
     {
         $education = Education::all();
-        return EducationResource::collection($education);
+
+        return $this->success(
+            EducationResource::collection($education),
+            "Berhasil mendapatkan data"
+        );
     }
 
     public function getByCategory(CategoryRequest $request)
     {
         $education = Education::where('category_id', $request->category_id)->get();
-        return EducationResource::collection($education);
+
+        return $this->success(
+            EducationResource::collection($education),
+            "Berhasil mendapatkan data"
+        );
     }
 
-    public function getById(EducationRequest $request) :EducationResource
+    public function getById(EducationRequest $request)
     {
         $education = Education::find($request->id);
-        return new EducationResource($education);
+
+        return $this->success(
+            EducationResource::make($education),
+            "Berhasil mendapatkan data"
+        );
     }
 
     public function onClick(EducationRequest $request) :JsonResponse
@@ -51,8 +74,8 @@ class EducationController extends Controller
         $education->on_clicked += 1;
         $education->save();
 
-        return response()->json([
-            'data' => true
-        ])->setStatusCode(200);
+        return $this->success(
+            message: "Berhasil mengubah data"
+        );
     }
 }
