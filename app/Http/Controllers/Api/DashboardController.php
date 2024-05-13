@@ -8,6 +8,7 @@ use App\Http\Resources\Api\DashboardResource;
 use App\Models\Cycle;
 use App\Models\Debt;
 use App\Repository\Api\DashboardRepo;
+use App\Traits\ApiResponser;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
+    use ApiResponser;
     public function question(DashboardRequest $request) :JsonResponse
     {
         $data = $request->validated();
@@ -23,9 +25,9 @@ class DashboardController extends Controller
             DB::transaction(function () use ($data){
                 DashboardRepo::question($data);
             });
-            return response()->json([
-                'data' => true
-            ])->setStatusCode(200);
+            return $this->success(
+                message: "Berhasil menambahkan data"
+            );
         } catch (QueryException $e){
             throw new HttpResponseException(response([
                 'errors' => $e->getMessage()
@@ -33,7 +35,7 @@ class DashboardController extends Controller
         }
     }
 
-    public function getCycle(DashboardRequest $request) :DashboardResource
+    public function getCycle(DashboardRequest $request) :JsonResponse
     {
         $data = $request->validated();
         $cycle = Cycle::where([
@@ -42,7 +44,11 @@ class DashboardController extends Controller
         ])
             ->orderBy('id', 'desc')
             ->first();
-        return new DashboardResource($cycle);
+
+        return $this->success(
+            DashboardResource::make($cycle),
+            "Berhasil mendapatkan data"
+        );
     }
 
     public function getDebt(DashboardRequest $request) :JsonResponse
@@ -53,8 +59,10 @@ class DashboardController extends Controller
             ['is_done', '0'],
             ['user_id', Auth::user()->id]
         ])->count();
-        return response()->json([
-            'data' => $debt
-        ])->setStatusCode(200);
+
+        return $this->success(
+            $debt,
+            'Berhasil mendapatkan data'
+        );
     }
 }

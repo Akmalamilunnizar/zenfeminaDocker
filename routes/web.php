@@ -18,16 +18,20 @@ use App\Http\Controllers\Admin\CategoryController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::controller(AuthController::class)->middleware('guest')->group(function() {
-    Route::get('/login', 'index')->name('login');
+    Route::get('/', 'index')->name('login');
     Route::post('/store', 'store');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function (){
+
+    //signOut
+    Route::get('signOut', [AuthController::class, 'signOut'])->name('signOut');
+
     //dashboard
     Route::resource('dashboard', DashboardController::class)
         ->only('index');

@@ -8,6 +8,7 @@ use App\Http\Requests\Api\RegisterRequest;
 use App\Http\Requests\Api\UserUpdateRequest;
 use App\Http\Resources\Api\UserResource;
 use App\Models\User;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function register(RegisterRequest $request) :UserResource
+    use ApiResponser;
+    public function register(RegisterRequest $request)
     {
         $data = $request->validated();
         $user = User::create([
@@ -27,10 +29,14 @@ class UserController extends Controller
         ]);
 
         $user->assignRole('user');
-        return new UserResource($user);
+
+        return $this->success(
+            UserResource::make($user),
+            "Berhasil mendapatkan data"
+        );
     }
 
-    public function login(LoginRequest $request) :UserResource
+    public function login(LoginRequest $request)
     {
         $data = $request->validated();
         $res = Auth::attempt($request->validated());
@@ -46,22 +52,32 @@ class UserController extends Controller
         $user = User::where('email', $data['email'])->first();
         $user->token = Str::uuid()->toString();
         $user->save();
-        return new UserResource($user);
+
+        return $this->success(
+            UserResource::make($user),
+            "Berhasil Login"
+        );
     }
 
-    public function getUser(Request $request) :UserResource
+    public function getUser(Request $request)
     {
         $user = Auth::user();
-        return new UserResource($user);
+
+        return $this->success(
+            UserResource::make($user),
+            "Berhasil mendapatkan data"
+        );
+
     }
 
-    public function update(UserUpdateRequest $request) :JsonResponse
+    public function update(UserUpdateRequest $request)
     {
         $user = Auth::user();
         $user->update($request->validated());
-        return response()->json([
-            'data' => true
-        ])->setStatusCode(200);
+
+        return $this->success(
+            message: "Berhasil mengubah data"
+        );
     }
 
     public function logOut(Request $request) :JsonResponse
@@ -70,8 +86,8 @@ class UserController extends Controller
         $user->token = null;
         $user->save();
 
-        return response()->json([
-            'data' => true
-        ])->setStatusCode(200);
+        return $this->success(
+            message: "Berhasil Keluar"
+        );
     }
 }
