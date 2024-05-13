@@ -29,7 +29,7 @@
                             <!-- <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div> -->
-                            <div class="form-control-icon toggle-password has-icon-right"style="margin-right: 20px;">
+                            <div class="form-control-icon toggle-password has-icon-right"style="margin-right: 10px; top: 25px; bottom: 1px ">
                                 <i class="bi bi-eye"></i>
                             </div>
     

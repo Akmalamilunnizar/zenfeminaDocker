@@ -1,9 +1,15 @@
 @extends('layout.app')
 @section('dashboard', 'active')
 
+<link rel="stylesheet" href="">
 @section('content')
     <div class="pagetitle">
         <h1>Dashboard</h1>
+      <style>
+  h1, h2, h3, h4, h5, h6 {
+    color: black; /* Mengatur warna teks menjadi hitam */
+  }
+</style>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
@@ -54,7 +60,7 @@
                                 <div class="row">
                                     <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                         <div class="stats-icon red mb-2">
-                                            <i class="iconly-boldBookmark"></i>
+                                        <i class="bi bi-journal-bookmark-fill"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">

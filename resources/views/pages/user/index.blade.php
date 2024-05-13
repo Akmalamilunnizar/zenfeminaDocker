@@ -16,6 +16,11 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-4">
+                    <style>
+              #newUser {
+                color: white;
+                  }
+                     </style>
                         <div>
                             <button class="btn btn-primary" id="newUser" name="newUser">New User</button>
                         </div>

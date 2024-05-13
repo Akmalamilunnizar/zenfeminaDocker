@@ -4,6 +4,7 @@
     }
     & ~ #main {
         margin-left: 300px;
+        background-color: $secondary;
     }
 }
 @mixin sidebar-inactive {
@@ -84,7 +85,7 @@
             text-decoration: none;
             color: $sidebar-link-color;
             svg,i {
-                color:#7c8db5;
+                color:#DA2456;
             }
             i:before {
                 vertical-align: top;
@@ -108,7 +109,7 @@
                     }
                 }
                 >.sidebar-link {
-                    background-color: $primary;
+                    background-color: $secondary;
                     span {
                         color: #fff;
                     }
