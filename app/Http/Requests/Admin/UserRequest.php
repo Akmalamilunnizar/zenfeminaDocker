@@ -38,6 +38,16 @@ class UserRequest extends FormRequest
         return $rules;
     }
 
+    public function messages()
+    {
+        return [
+            'required' => 'Alamat :attribute harap diisi',
+            'email' => 'Format email tidak sesuai',
+            'size' => 'Panjang :attribute harus :size karakter',
+            'unique' => 'Alamat email ini sudah digunakan'
+        ];
+    }
+
     protected function failedValidation(Validator $validator)
     {
         return throw new FailedValidation($validator->errors());
