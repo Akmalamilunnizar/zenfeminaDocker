@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\AuthRequest;
 use App\Models\User;
+use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,10 +27,16 @@ class AuthController extends Controller
     public function store(AuthRequest $request)
     {
         if (!Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('login')->withErrors(['password' => 'password tidak sesuai']);
+            return response()->json([
+                'success' => false,
+                'password' => 'Password tidak sesuai',
+            ]);
         }
 
         $request->session()->regenerate();
-        return redirect('/dashboard');
+        return response()->json([
+            'status' => 'success',
+            'redirect' => '/dashboard'
+        ]);
     }
 }

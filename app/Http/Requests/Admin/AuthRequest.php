@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Exceptions\Api\FailedValidation;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AuthRequest extends FormRequest
@@ -27,5 +29,9 @@ class AuthRequest extends FormRequest
         ];
     }
 
+    protected function failedValidation(Validator $validator)
+    {
+        return throw new FailedValidation($validator->errors());
+    }
 
 }
