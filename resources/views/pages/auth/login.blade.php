@@ -19,10 +19,9 @@
                     <h1 class="auth-title">Sign In</h1>
                     <p class="auth-subtitle mb-5">Silakan masuk dengan menggunakan email dan password yang Anda daftarkan</p>
 
-                    <form action="/store" method="post" id="loginForm">
+                    <form action="/store" method="post">
                         @csrf
                         <div class="form-group position-relative has-icon-left mb-4">
-<<<<<<< HEAD
                             <input type="email" class="form-control form-control-xl @error('email') is-invalid @enderror" id="email" placeholder="Email" name="email" value="{{old('email')}}"style="padding-left: 20px; border-radius: 20px;">
                             <!-- <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
@@ -39,18 +38,14 @@
                                 <i class="bi bi-shield-lock"></i>
                             </div> -->
                             <div class="form-control-icon toggle-password has-icon-right"style="margin-right: 10px; top: 25px; bottom: 1px ">
-=======
-                            <input type="email" class="form-control form-control-xl" id="email" placeholder="Email" name="email" value="{{old('email')}}" style="padding-left: 20px;">
-                            <div class="invalid-feedback"></div>
-                        </div>
-                        <div class="form-group position-relative has-icon-right mb-4">
-                            <input type="password"  class="form-control form-control-xl" id="password" placeholder="Password" name="password" value="{{old('password')}}" style="padding-left: 20px;">
-                            <div class="invalid-feedback"></div>
-                            <div class="form-control-icon toggle-password has-icon-right" style="margin-right: 10px; top: 25px; bottom: 1px ">
->>>>>>> 0eb12ef9a529315d639691cba15be54dc8ea96a2
                                 <i class="bi bi-eye"></i>
                             </div>
-
+    
+                            @error('password')
+                            <div class="invaid-feedback">
+                                <small class="text-danger">{{ $message }}</small>
+                            </div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5" style="border-radius: 20px;">Log in</button>
                     </form>
@@ -66,48 +61,26 @@
             </div>
         </div>
 
-@push('script')
-    <script>
-        document.querySelector('.toggle-password').addEventListener('click', function() {
-            const passwordInput = document.getElementById('password');
-            const icon = this.querySelector('i');
+<script>
+// Toggle password visibility
+document.querySelector('.toggle-password').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const icon = this.querySelector('i');
 
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                icon.classList.remove('bi-eye');
-                icon.classList.add('bi-eye-slash');
-            } else {
-                passwordInput.type = 'password';
-                icon.classList.remove('bi-eye-slash');
-                icon.classList.add('bi-eye');
-            }
-        });
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        icon.classList.remove('bi-eye');
+        icon.classList.add('bi-eye-slash');
+    } else {
+        passwordInput.type = 'password';
+        icon.classList.remove('bi-eye-slash');
+        icon.classList.add('bi-eye');
+    }
+    // Set ulang posisi ikon mata
+    // icon.style.marginRight = '10px';
+});
 
-        document.getElementById('loginForm').addEventListener('submit', function (e){
-            e.preventDefault();
-            $.ajax({
-                type: 'POST',
-                url: '/store',
-                data: $(this).serialize(),
-                success(res) {
-                    if(res.status == 'success') {
-                        window.location.href = res.redirect;
-                    } else {
-                        const input = $(`#password`);
-                        input.addClass('is-invalid');
-                        input.next().html(res.password);
-                    }
-                },
-                error(err) {
-                    if(err.status == 422) {
-                        displayFormErrors(err.responseJSON.data);
-                    }
-                }
-            });
-        });
-
-    </script>
-@endpush
+</script>
 
 
 @endsection
