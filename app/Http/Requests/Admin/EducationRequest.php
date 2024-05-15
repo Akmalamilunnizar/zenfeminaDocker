@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Exceptions\Api\FailedValidation;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class EducationRequest extends FormRequest
@@ -24,12 +26,29 @@ class EducationRequest extends FormRequest
         $rules = [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
+            'category_id' => 'required|exists:categories,id'
         ];
 
-        if ($this->isMethod('POST'))
+        if ($this->getMethod('POST') && !$this->header('X-HTTP-Method-Override'))
             $rules['image'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048';
 
         return $rules;
     }
+
+    public function messages()
+    {
+        return [
+            'required' => 'Kolom ini harap diisi',
+            'exists' => 'Kategori ini tidak ditemukan',
+            'max' => 'Panjang kolom ini tidak boleh lebih dari :max karakter',
+            'Image' => 'File harus berupa image'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        return throw new FailedValidation($validator->errors());
+    }
+
+
 }

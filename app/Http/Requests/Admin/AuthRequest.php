@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Admin;
 
+use App\Exceptions\Api\FailedValidation;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AuthRequest extends FormRequest
@@ -27,5 +29,19 @@ class AuthRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'required' => 'Alamat :attribute harap diisi',
+            'email' => 'Format email tidak sesuai',
+            'exists' => 'Alamat :attribute tidak ditemukan',
+            'size' => 'Panjang :attribute harus :size karakter'
+        ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        return throw new FailedValidation($validator->errors());
+    }
 
 }

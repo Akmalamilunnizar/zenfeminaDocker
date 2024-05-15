@@ -34,6 +34,14 @@ class CategoryRequest extends FormRequest
         return $rules;
     }
 
+    public function messages()
+    {
+        return [
+            'required' => 'Kolom :attribute harap diisi',
+            'unique' => 'Kategori ini sudah tersedia'
+        ];
+    }
+
     protected function failedValidation(Validator $validator)
     {
         return throw new FailedValidation($validator->errors());
