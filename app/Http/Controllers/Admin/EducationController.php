@@ -43,11 +43,10 @@ class EducationController extends Controller
      */
     public function store(EducationRequest $request)
     {
-
         EducationRepo::save($request->all());
-
-        return to_route('educations.index')
-            ->with('alert_s', 'Berhasil menambahkan artikel');
+        return $this->success(
+            message: 'Berhasil menambahkan artikel'
+        );
     }
 
     /**
@@ -90,8 +89,9 @@ class EducationController extends Controller
     {
         EducationRepo::save($request->all(), $education);
 
-        return to_route('educations.index')
-            ->with('alert_s', 'Berhasil mengupdate artikel');
+        return $this->success(
+            message: 'Berhasil mengubah artikel artikel'
+        );
     }
 
     /**
