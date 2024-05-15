@@ -219,7 +219,7 @@
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-CkEhxRKp.css",
+    "file": "assets/app-CfUkAVdW.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   },
@@ -229,12 +229,12 @@
     "isEntry": true
   },
   "resources/sass/pages/auth.scss": {
-    "file": "assets/auth-5_JTxzdR.css",
+    "file": "assets/auth-1yyJSwQ0.css",
     "src": "resources/sass/pages/auth.scss",
     "isEntry": true
   },
   "resources/sass/themes/dark/app-dark.scss": {
-    "file": "assets/app-dark-MP25PnaQ.css",
+    "file": "assets/app-dark-CHYl3BcP.css",
     "src": "resources/sass/themes/dark/app-dark.scss",
     "isEntry": true
   }
