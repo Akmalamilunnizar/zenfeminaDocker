@@ -14,8 +14,8 @@
         "resources/sass/themes/dark/app-dark.scss",
         "resources/sass/pages/auth.scss"
     ])
-    <link rel="shortcut icon" href="{{ asset('assets/static/images/logo/favicon.svg') }}" type="image/x-icon">
-    <link rel="shortcut icon" href="{{ asset('assets/static/images/logo/favicon.png') }}" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/static/images/logo/logo.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets/static/images/logo/logo.png') }}" type="image/png">
 </head>
 
 <body>
