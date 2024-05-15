@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
@@ -37,6 +38,18 @@ class AuthController extends Controller
         return response()->json([
             'status' => 'success',
             'redirect' => '/dashboard'
+        ]);
+    }
+
+    public function signOut()
+    {
+        Auth::guard('web')->logout();
+
+        Session::invalidate();
+        Session::regenerateToken();
+
+        return response()->json([
+            'message' => 'Anda Berhasil Keluar'
         ]);
     }
 }
