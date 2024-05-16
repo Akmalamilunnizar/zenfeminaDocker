@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('period_length');
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
+            $table->tinyInteger('on_started')->default('0')->nullable();
         });
     }
 

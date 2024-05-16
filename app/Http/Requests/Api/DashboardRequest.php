@@ -34,7 +34,8 @@ class DashboardRequest extends FormRequest
             'birthDate' => 'required|date_format:Y-m-d',
             'lastDate' => 'required|date_format:Y-m-d',
             'period' => 'required|int',
-            'cycle' => 'required|int'
+            'cycle' => 'required|int',
+            'is_holy' => 'required|int'
         ];
     }
 

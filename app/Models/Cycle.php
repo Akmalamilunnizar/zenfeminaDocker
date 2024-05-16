@@ -12,7 +12,7 @@ class Cycle extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'type', 'cycle_length', 'period_length', 'start_date', 'end_date', 'user_id'
+        'type', 'cycle_length', 'period_length', 'start_date', 'end_date', 'user_id', 'on_started'
     ];
 
     protected function user() :BelongsTo

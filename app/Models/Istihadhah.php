@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Istihadhah extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'start_date', 'end_date', 'user_id'
     ];
