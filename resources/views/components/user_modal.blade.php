@@ -6,17 +6,22 @@
 
         #togglePassword {
             position: absolute;
-            top: 50%;
-            right: 10px;
+            top: 48%;
+            right: 25px;
             transform: translateY(-50%);
             cursor: pointer;
             z-index: 1; /* Ensure the icon appears above the input */
         }
 
         .invalid-feedback {
-            /* Atur jarak ke kiri saat kondisi tidak valid */
-            left: 30px; /* Sesuaikan nilai ini sesuai kebutuhan Anda */
-        }
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    right: 0;
+    font-size: 12px;
+    color: red;
+}
+
 
     </style>
 @endpush

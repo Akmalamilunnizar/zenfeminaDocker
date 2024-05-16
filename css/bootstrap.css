@@ -2848,14 +2848,12 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  right: 0;
-  font-size: 12px;
-  color: red;
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--bs-form-invalid-color);
 }
-
 
 .invalid-tooltip {
   position: absolute;
@@ -3107,7 +3105,7 @@ textarea.form-control-lg {
 
 .btn-danger {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #da4256;
+  --bs-btn-bg: #dc3545;
   --bs-btn-border-color: #dc3545;
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #bb2d3b;

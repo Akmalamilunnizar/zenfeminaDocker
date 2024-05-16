@@ -29,7 +29,7 @@
                             <input type="password"  class="form-control form-control-xl @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" value="{{old('password')}}"style="padding-left: 20px; border-radius: 12px;">
                             <div class="invalid-feedback"></div>
 
-                            <div class="form-control-icon toggle-password has-icon-right"style="margin-right: 10px; top: 25px; bottom: 1px ">
+                            <div class="form-control-icon toggle-password has-icon-right"style="margin-right: 44px; top: 25px; bottom: 1px ">
                                 <i class="bi bi-eye"></i>
                             </div>
                         </div>

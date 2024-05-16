@@ -1,0 +1,1 @@
+{"version":3,"sources":["../resources/sass/pages/error.scss","../resources/sass/_variables.scss","error.css","../resources/sass/themes/dark/_variables-dark.scss"],"names":[],"mappings":"AAEA;EACI,yBCoLa;EDnLb,eAAA;EACA,iBAAA;AEDJ;AFEI;EACI,aAAA;EACA,sBAAA;KAAA,mBAAA;EACA,sBAAA;AEAR;AFEI;EACI,eAAA;EACA,gBAAA;AEAR;;AFII;EAEI,yBGuGoB;ADzG5B","file":"error.css"}
