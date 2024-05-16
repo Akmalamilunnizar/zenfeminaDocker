@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\ProfileController;
 
 Route::controller(AuthController::class)->middleware('guest')->group(function() {
     Route::get('/', 'index')->name('login');
+    Route::get('/login', 'index')->name('login');
     Route::post('/store', 'store');
 });
 
@@ -78,7 +79,12 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 
             Route::delete('{category}', 'destroy')->name('destroy');
         });
-
      //profile
      Route::resource('profile', ProfileController::class);
 });
+
+Route::get('/verifikasi', function () {
+    return view('pages.verification_email',['title'=>'Verifikasiemail']);
+    });
+
+
