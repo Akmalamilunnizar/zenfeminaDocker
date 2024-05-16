@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EducationController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,4 +79,6 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
             Route::delete('{category}', 'destroy')->name('destroy');
         });
 
+     //profile
+     Route::resource('profile', ProfileController::class);
 });
