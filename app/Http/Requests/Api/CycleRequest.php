@@ -22,7 +22,7 @@ class CycleRequest extends FormRequest
     public function rules(): array
     {
         $rules = [
-            'beginDate' => 'required|date_format:Y-m-d H:i:s'
+            'inputDate' => 'required|date_format:Y-m-d H:i:s'
         ];
 
         if($this->getMethod() == 'POST')

@@ -71,6 +71,9 @@ Route::middleware(ApiAuthMiddleware::class)->group(function (){
     //Cycle
     Route::controller(CycleController::class)->prefix('/cycle')->group(function (){
         Route::get('all', 'getAll');
+        Route::post('beginCycle', 'beginCycle');
+        Route::post('continueCycle', 'continueCycle');
+        Route::post('endCycle', 'endCycle');
     });
 });
 
