@@ -23,7 +23,7 @@ class User extends Authenticatable
         return Carbon::parse($this->birthDate)->age;
     }
 
-    protected function cycle() :HasMany
+    public function cycle() :HasMany
     {
         return $this->hasMany(Cycle::class);
     }
