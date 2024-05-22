@@ -6,14 +6,8 @@ export default defineConfig({
     resolve: {
         alias: {
             "~bootstrap": resolve(__dirname, "node_modules/bootstrap"),
-            "~bootstrap-icons": resolve(
-                __dirname,
-                "node_modules/bootstrap-icons",
-            ),
-            "~perfect-scrollbar": resolve(
-                __dirname,
-                "node_modules/perfect-scrollbar",
-            ),
+            "~bootstrap-icons": resolve(__dirname, "node_modules/bootstrap-icons"),
+            "~perfect-scrollbar": resolve(__dirname, "node_modules/perfect-scrollbar"),
             "~@fontsource": resolve(__dirname, "node_modules/@fontsource"),
         },
     },
@@ -31,4 +25,7 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        minify: process.env.NODE_ENV === 'production',
+    },
 });

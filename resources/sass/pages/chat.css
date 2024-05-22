@@ -22,9 +22,7 @@
   padding: 1.5rem 2rem;
   background-color: #fff;
   border-bottom: 1px solid #e9ecef;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   margin-right: 0;
   position: relative;
 }

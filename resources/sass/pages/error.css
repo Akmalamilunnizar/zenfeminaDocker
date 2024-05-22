@@ -5,8 +5,7 @@
 }
 #error .img-error {
   height: 435px;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   padding: 3rem 0 3rem 0;
 }
 #error .error-title {
