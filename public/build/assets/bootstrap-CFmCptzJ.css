@@ -2747,11 +2747,10 @@ textarea.form-control.is-valid {
     z-index: 3;
 }
 .invalid-feedback {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    right: 0;
-    font-size: 12px;
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
     color: var(--bs-form-invalid-color);
 }
 .invalid-tooltip {

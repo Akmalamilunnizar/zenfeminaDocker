@@ -4088,11 +4088,10 @@ html[data-bs-theme='dark']
     z-index: 3;
 }
 html[data-bs-theme='dark'] .invalid-feedback {
-    position: absolute;
-    bottom: -20px;
-    left: 0;
-    right: 0;
-    font-size: 12px;
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
     color: #dc3545;
 }
 html[data-bs-theme='dark'] .invalid-tooltip {
