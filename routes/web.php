@@ -83,8 +83,6 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
      Route::resource('profile', ProfileController::class);
 });
 
-Route::get('/verifikasi', function () {
-    return view('pages.verification_email',['title'=>'Verifikasiemail']);
-    });
+
 
 
