@@ -14,6 +14,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -73,8 +74,11 @@ class UserController extends Controller
     public function update(UserUpdateRequest $request)
     {
         $user = Auth::user();
-        $user->update($request->validated());
+        $data = $request->validated();
+        if (isset($data['image']))
+            $data['image'] = $data['image']->storePublicly('users', 'public');
 
+        $user->update($data);
         return $this->success(
             message: "Berhasil mengubah data"
         );

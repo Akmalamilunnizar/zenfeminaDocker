@@ -26,7 +26,7 @@ class UserUpdateRequest extends FormRequest
         return [
             'username' => 'required|max:50',
             'email' => 'required|email|max:100',
-            'profile_img' => 'nullable',
+            'image' => 'nullable',
             'birthDate' => 'required|date_format:Y-m-d'
         ];
     }
