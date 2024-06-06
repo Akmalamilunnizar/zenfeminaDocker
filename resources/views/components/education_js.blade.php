@@ -48,7 +48,8 @@
             //description
             const description = document.createElement('p');
             description.className = 'card-text';
-            description.textContent = education.content;
+            var content = education.content;
+            description.textContent = content.substring(0, 80) + '...';
 
             // Membuat elemen div untuk tombol
             const buttonContainer = document.createElement('div');
