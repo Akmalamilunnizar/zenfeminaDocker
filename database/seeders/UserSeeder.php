@@ -17,7 +17,6 @@ class UserSeeder extends Seeder
         $admin = User::create([
             'username' => 'admin',
             'email' => 'admin@gmail.com',
-            'profile_img' => null,
             'birthdate' => null,
             'password' => Hash::make('admin123')
         ]);
@@ -26,7 +25,6 @@ class UserSeeder extends Seeder
         $user = User::create([
             'username' => 'user',
             'email' => 'user@gmail.com',
-            'profile_img' => null,
             'birthdate' => null,
             'password' => Hash::make('user123')
         ]);
