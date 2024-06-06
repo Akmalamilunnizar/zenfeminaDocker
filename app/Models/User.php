@@ -7,17 +7,23 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory, HasRoles;
+    use HasFactory, HasRoles, Notifiable;
     public $timestamps = false;
 
     protected $fillable = [
-      'image','username', 'email', 'birthDate', 'password'
+      'image','username', 'email', 'birthDate', 'password', 'fcm_token'
     ];
+
+    public function routeNotificationForFcm()
+    {
+        return $this->fcm_token;
+    }
 
     public function getAgeAttribute(){
         return Carbon::parse($this->birthDate)->age;

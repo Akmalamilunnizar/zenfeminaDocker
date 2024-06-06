@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('birthDate')->nullable();
             $table->string('password');
             $table->string('token', 100)->unique('user_token')->nullable();
+            $table->string('fcm_token')->unique()->nullable();
         });
     }
 
