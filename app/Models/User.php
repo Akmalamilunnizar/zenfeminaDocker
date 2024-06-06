@@ -16,7 +16,7 @@ class User extends Authenticatable
     public $timestamps = false;
 
     protected $fillable = [
-      'image','username', 'email', 'profile_img', 'birthDate', 'password'
+      'image','username', 'email', 'birthDate', 'password'
     ];
 
     public function getAgeAttribute(){
