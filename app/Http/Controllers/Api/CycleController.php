@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\CycleRequest;
 use App\Http\Resources\Api\CycleResource;
 use App\Models\Cycle;
+use App\Repository\Api\CycleRepo;
 use App\Traits\ApiResponser;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,9 +27,27 @@ class CycleController extends Controller
         );
     }
 
-    public function beginCycle(){}
+    public function beginCycle(CycleRequest $request){
+        CycleRepo::beginCycle($request);
 
-    public function continueCycle(){}
+        return $this->success(
+            message: 'Berhasil memulai siklus'
+        );
+    }
 
-    public function completeCycle(){}
+    public function continueCycle(CycleRequest $request){
+        CycleRepo::continueCycle();
+
+        return $this->success(
+            message: 'Berhasil melanjutkan siklus'
+        );
+    }
+
+    public function completeCycle(CycleRequest $request){
+        CycleRepo::endCycle($request);
+
+        return $this->success(
+            message: 'Berhasil mengakhiri Siklus'
+        );
+    }
 }
