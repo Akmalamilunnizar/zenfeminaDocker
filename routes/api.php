@@ -66,6 +66,7 @@ Route::middleware(ApiAuthMiddleware::class)->group(function (){
         Route::post('/question', 'question');
         Route::get('/getCycle', 'getCycle');
         Route::get('/getDebt', 'getDebt');
+        Route::get('/cardView', 'cardView');
     });
 
     //Cycle

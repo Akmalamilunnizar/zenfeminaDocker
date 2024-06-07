@@ -7,6 +7,7 @@ use App\Models\Istihadhah;
 use Carbon\Carbon;
 use http\Client\Curl\User;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Scalar\String_;
 
 class DashboardRepo
 {
@@ -90,5 +91,54 @@ class DashboardRepo
                 ]);
             }
         }
+    }
+
+    public static function cardView()
+    {
+        $message = null;
+        $condition = null;
+        $user = Auth::user();
+        $cycleEst = Cycle::query()
+            ->where('user_id', $user->id)
+            ->where('type', '=', 'est')->first();
+
+        $istihadhah = Istihadhah::query()
+            ->where('user_id', $user->id)
+            ->orderBy('start_date', 'desc')
+            ->first();
+
+        $now = Carbon::now();
+        $startDateEst = Carbon::parse($cycleEst->start_date);
+        $startDateIstihadhah = null;
+        if($istihadhah){
+            $startDateIstihadhah = Carbon::parse($istihadhah->start_date);
+        }
+
+        if($now->gte($startDateEst)){
+            $dateNow1 = Carbon::now();
+            $value = ($dateNow1->diffInDays($startDateEst)) + 1;
+            $condition = 'Hari ke-' . $value;
+            $message = 'Anda dalam keadaan Haid';
+        } else {
+
+            $dateNow3 = Carbon::now();
+            $value = $startDateEst->diffInDays($dateNow3);
+            $condition = $value . ' Hari lagi';
+            $message = 'menuju siklus haid selanjutnya';
+
+            if($istihadhah){
+                if($now->gte($startDateIstihadhah)){
+                    $dateNow2 = Carbon::now();
+                    $value = ($dateNow2->diffInDays($startDateIstihadhah)) + 1;
+                    $condition = 'Hari ke-' . $value;
+                    $message = 'Anda dalam keadaan Istihadhah';
+                }
+            }
+        }
+
+        $data = [];
+        $data['condition'] = $condition;
+        $data['message'] = $message;
+        return $data;
     }
 }

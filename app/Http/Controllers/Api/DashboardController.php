@@ -65,4 +65,12 @@ class DashboardController extends Controller
             'Berhasil mendapatkan data'
         );
     }
+
+    public function cardView()
+    {
+        $data = DashboardRepo::cardView();
+        return response()->json([
+            'data' => $data
+        ]);
+    }
 }
