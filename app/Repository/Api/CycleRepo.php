@@ -34,7 +34,7 @@ class CycleRepo{
                 $cycleHist->save();
             } else {
                 Istihadhah::create([
-                    'start_date' => $data['beginDate'],
+                    'start_date' => $data['inputDate'],
                     'end_date' => Carbon::parse($data['inputDate'])->addDays(14),
                     'user_id' => $user->id
                 ]);
