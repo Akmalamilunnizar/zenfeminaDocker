@@ -97,6 +97,7 @@ class DashboardRepo
     {
         $message = null;
         $condition = null;
+        $button = null;
         $user = Auth::user();
         $cycleEst = Cycle::query()
             ->where('user_id', $user->id)
@@ -119,12 +120,14 @@ class DashboardRepo
             $value = ($dateNow1->diffInDays($startDateEst)) + 1;
             $condition = 'Hari ke-' . $value;
             $message = 'Anda dalam keadaan Haid';
+            $button = 'Akhiri Haid';
         } else {
 
             $dateNow3 = Carbon::now();
             $value = $startDateEst->diffInDays($dateNow3);
             $condition = $value . ' Hari lagi';
             $message = 'menuju siklus haid selanjutnya';
+            $button = 'Awali Haid';
 
             if($istihadhah){
                 if($now->gte($startDateIstihadhah)){
@@ -132,6 +135,7 @@ class DashboardRepo
                     $value = ($dateNow2->diffInDays($startDateIstihadhah)) + 1;
                     $condition = 'Hari ke-' . $value;
                     $message = 'Anda dalam keadaan Istihadhah';
+                    $button = 'Akhiri Istihadhah';
                 }
             }
         }
@@ -139,6 +143,7 @@ class DashboardRepo
         $data = [];
         $data['condition'] = $condition;
         $data['message'] = $message;
+        $data['button'] = $message;
         return $data;
     }
 }
