@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\ReminderController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\CycleController;
+use App\Http\Controllers\Api\PrayerTimesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +79,5 @@ Route::middleware(ApiAuthMiddleware::class)->group(function (){
     });
 });
 
+    //jadwal shalat
+    Route::get('/prayer-times', [PrayerTimesController::class, 'getPrayerTimes']);
