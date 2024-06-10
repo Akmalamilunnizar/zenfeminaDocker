@@ -83,6 +83,10 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
      Route::resource('profile', ProfileController::class);
 });
 
+Route::get('notificationEx', function (){
+   $user = \App\Models\User::find(3);
+   $user->notify(new \App\Notifications\BaseNotification('Pengingat siklus', 'Siklus anda akan segera dimulai'));
+});
 
 
 
