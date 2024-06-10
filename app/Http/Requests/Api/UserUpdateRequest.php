@@ -24,10 +24,11 @@ class UserUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|max:50',
-            'email' => 'required|email|max:100',
+            'username' => 'nullable|max:50',
+            'email' => 'nullable|email|max:100',
             'image' => 'nullable',
-            'birthDate' => 'required|date_format:Y-m-d'
+            'birthDate' => 'nullable|date_format:Y-m-d',
+            'fcm_token' => 'nullable'
         ];
     }
 
