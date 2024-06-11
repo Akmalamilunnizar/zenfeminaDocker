@@ -22,6 +22,7 @@ class Kernel extends ConsoleKernel
     {
          $schedule->command('app:delete-user')->daily()->at('00:00');
          $schedule->command('app:check-fasting-command')->daily()->at('00:00');
+         $schedule->command('app:reminder-command')->everySecond();
     }
 
     /**
