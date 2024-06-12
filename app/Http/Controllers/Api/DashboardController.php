@@ -65,10 +65,14 @@ class DashboardController extends Controller
             $message = ' Anda tidak memiliki hutang ' . $data['type'];
         }
 
-        return $this->success(
-            $message,
-            'Berhasil mendapatkan data'
-        );
+//        return $this->success(
+//            $message,
+//            'Berhasil mendapatkan data'
+//        );
+        return response()->json([
+            'data' => $message
+        ]);
+
     }
 
     public function cardView()
