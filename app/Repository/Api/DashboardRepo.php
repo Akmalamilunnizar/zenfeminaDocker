@@ -125,8 +125,15 @@ class DashboardRepo
 
             $dateNow3 = Carbon::now();
             $value = $startDateEst->diffInDays($dateNow3);
-            $condition = $value . ' Hari lagi';
-            $message = 'menuju siklus haid selanjutnya';
+
+            if($value == 0)
+            {
+                $condition = 'Hari ini';
+                $message = 'Apakah hari ini anda haid?';
+            } else {
+                $condition = $value . ' Hari lagi';
+                $message = 'menuju siklus haid selanjutnya';
+            }
             $button = 'Awali Haid';
 
             if($istihadhah){
@@ -143,7 +150,7 @@ class DashboardRepo
         $data = [];
         $data['condition'] = $condition;
         $data['message'] = $message;
-        $data['button'] = $message;
+        $data['button'] = $button;
         return $data;
     }
 }

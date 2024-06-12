@@ -59,9 +59,14 @@ class DashboardController extends Controller
             ['is_done', '0'],
             ['user_id', Auth::user()->id]
         ])->count();
+        $message = ' Anda memiliki ' . $debt . ' hutang ' . $data['type'];
+        if( $debt == 0)
+        {
+            $message = ' Anda tidak memiliki hutang ' . $data['type'];
+        }
 
         return $this->success(
-            $debt,
+            $message,
             'Berhasil mendapatkan data'
         );
     }

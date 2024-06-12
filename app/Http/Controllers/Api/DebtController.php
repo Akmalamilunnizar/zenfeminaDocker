@@ -31,7 +31,6 @@ class DebtController extends Controller
             ]), 401);
         }
 
-//        return DebtResource::collection($debt);
         return $this->success(
             DebtResource::collection($debt),
             "Berhasil mendapatkan data"
