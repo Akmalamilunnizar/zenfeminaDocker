@@ -59,10 +59,10 @@ class DashboardController extends Controller
             ['is_done', '0'],
             ['user_id', Auth::user()->id]
         ])->count();
-        $message = ' Anda memiliki ' . $debt . ' hutang ' . $data['type'];
+        $message = ' Anda memiliki ' . $debt . ' hutang ';
         if( $debt == 0)
         {
-            $message = ' Anda tidak memiliki hutang ' . $data['type'];
+            $message = ' Anda tidak memiliki hutang ';
         }
 
 //        return $this->success(
@@ -70,7 +70,9 @@ class DashboardController extends Controller
 //            'Berhasil mendapatkan data'
 //        );
         return response()->json([
-            'data' => $message
+            'data' => [
+                'message' => $message
+            ]
         ]);
 
     }
