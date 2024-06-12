@@ -115,7 +115,7 @@ class DashboardRepo
             $startDateIstihadhah = Carbon::parse($istihadhah->start_date);
         }
 
-        if($now->gte($startDateEst)){
+        if($now->gte($startDateEst) && $cycleEst->on_started == 1){
             $dateNow1 = Carbon::now();
             $value = ($dateNow1->diffInDays($startDateEst)) + 1;
             $condition = 'Hari ke-' . $value;
