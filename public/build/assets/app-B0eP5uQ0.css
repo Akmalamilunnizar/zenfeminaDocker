@@ -19850,7 +19850,7 @@ a {
     z-index: 1;
 }
 .invalid-feedback {
-    position: absolute;
+    /*position: absolute;*/
     bottom: -20px;
     left: 0;
     right: 0;
