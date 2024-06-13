@@ -60,6 +60,13 @@
                 </a>
             </li>
 
+            <li class="sidebar-item @yield('category')">
+                <a href="{{route('categories.index')}}"  class='sidebar-link'>
+                    <i class="bi bi-card-list"></i>
+                    <span>Category</span>
+                </a>
+            </li>
+
             <li class="sidebar-item @yield('education')">
                 <a href="{{ route('educations.index') }}"  class='sidebar-link'>
                     <i class="bi bi-journal-bookmark-fill"></i>
@@ -71,13 +78,6 @@
                 <a href="{{route('educations.create')}}"  class='sidebar-link'>
                     <i class="bi bi-cloud-arrow-up"></i>
                     <span>Upload Education</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item @yield('category')">
-                <a href="{{route('categories.index')}}"  class='sidebar-link'>
-                    <i class="bi bi-card-list"></i>
-                    <span>Category</span>
                 </a>
             </li>
 
