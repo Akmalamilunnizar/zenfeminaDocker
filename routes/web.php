@@ -30,7 +30,6 @@ use App\Http\Controllers\Admin\ProfileController;
 
 Route::controller(AuthController::class)->middleware('guest')->group(function() {
     Route::get('/', 'index')->name('login');
-    Route::get('/login', 'index')->name('login');
     Route::post('/store', 'store');
 });
 
@@ -56,8 +55,6 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 
             Route::delete('{user}', 'destroy')->name('destroy');
         });
-//    Route::resource('users', UserController::class)
-//        ->except('show');
 
     //education
     Route::prefix('educations')->name('educations.')->controller(EducationController::class)->group(function () {
@@ -84,15 +81,17 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
 
             Route::delete('{category}', 'destroy')->name('destroy');
         });
-     //profile
-     Route::resource('profile', ProfileController::class);
+
+    // Profile password update routes
+    Route::prefix('profile')->group(function () {
+        Route::get('password', [ProfileController::class, 'showUpdatePasswordForm'])->name('profile.password.form');
+        Route::post('password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    });
+    
+    Route::resource('profile', ProfileController::class)->except(['show']);
 });
 
 Route::get('notificationEx', function (){
    $user = \App\Models\User::find(3);
    $user->notify(new \App\Notifications\BaseNotification('Pengingat siklus', 'Siklus anda akan segera dimulai'));
 });
-
-
-
-

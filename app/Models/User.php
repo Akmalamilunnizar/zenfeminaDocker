@@ -2,22 +2,27 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
+use Carbon\Carbon; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
     use HasFactory, HasRoles, Notifiable;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
     public $timestamps = false;
 
     protected $fillable = [
-      'image','username', 'email', 'birthDate', 'password', 'fcm_token'
+        'image', 'username', 'email', 'birthDate', 'password', 'fcm_token'
     ];
 
     public function routeNotificationForFcm()
@@ -25,33 +30,33 @@ class User extends Authenticatable
         return $this->fcm_token;
     }
 
-    public function getAgeAttribute(){
+    public function getAgeAttribute()
+    {
         return Carbon::parse($this->birthDate)->age;
     }
 
-    public function cycle() :HasMany
+    public function cycle(): HasMany
     {
         return $this->hasMany(Cycle::class);
     }
 
-    protected function debt() :HasMany
+    public function debt(): HasMany 
     {
         return $this->hasMany(Debt::class);
     }
 
-    protected function istihadhah() :HasMany
+    public function istihadhah(): HasMany 
     {
         return $this->hasMany(Istihadhah::class);
     }
 
-    protected function verification() :HasOne
+    public function verification(): HasOne 
     {
         return $this->hasOne(Verification::class);
     }
 
-    protected function reminder() :HasMany
+    public function reminder(): HasMany 
     {
         return $this->hasMany(Reminder::class);
     }
-
 }
