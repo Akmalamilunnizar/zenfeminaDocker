@@ -25,9 +25,9 @@ class CycleRepo{
             ['type', 'est']
         ])->first();
 
-        $difference = ($cycleHist->end_date - $data['inputDate']);
+        $difference = Carbon::parse($data['inputDate'])->diffInDays(Carbon::parse($cycleHist->end_date));
         if($difference < 15 ){
-            if(($difference + $cycleHist->period) < 15){
+            if(($difference + $cycleHist->period_length) < 15){
                 $cycleEst->delete();
                 $cycleHist->type = 'est';
                 $cycleHist->end_date = null;
@@ -35,7 +35,6 @@ class CycleRepo{
             } else {
                 Istihadhah::create([
                     'start_date' => $data['inputDate'],
-                    'end_date' => Carbon::parse($data['inputDate'])->addDays(14),
                     'user_id' => $user->id
                 ]);
             }
@@ -55,12 +54,26 @@ class CycleRepo{
         ])->first();
 
         $startEst = $cycleEst->start_date;
-        $cycleEst->end_date = Carbon::parse($startEst)->addDays(14);;
+        $endDate = Carbon::parse($startEst)->addDays(14);
+        $cycleEst->end_date = $endDate;
+        $cycleEst->on_started = 0;
+        $cycleEst->type = 'hist';
         $cycleEst->save();
+
+        $avgCycle = static::getAvg('cycle_length');
+        $avgPeriod = static::getAvg('period_length');
+        $val = ($avgCycle- $avgPeriod) + 1;
+        Cycle::create([
+            'type' => 'est' ,
+            'cycle_length' => $avgCycle,
+            'period_length' => $avgPeriod,
+            'start_date' => $endDate->addDays($val),
+            'user_id' => $user->id,
+            'on_started' => 0
+        ]);
 
         Istihadhah::create([
             'start_date' => Carbon::parse($startEst)->addDays(15),
-            'end_date' => Carbon::parse($startEst)->addDays(29),
             'user_id' => $user->id
         ]);
 
@@ -80,16 +93,18 @@ class CycleRepo{
             'user_id' => $user->id
         ])->orderBy('id', 'desc')->first();
 
-        $difference = Carbon::parse($data['inputDate'])->diffInDays(Carbon::parse($cycleEst->start_date));
-        if($difference <= 15)
-        {
+        if($istihadhah->end_date == null){
+            $istihadhah->end_date = Carbon::parse($data['inputDate']);
+            $istihadhah->save();
+        } else {
             $startDate = Carbon::parse($cycleEst->start_date)->subDays(1);
             $difference = Carbon::parse($data['inputDate'])->diffInDays($startDate);
-            $cycleBefore = $cycleEst->cycle;
+            $cycleBefore = $cycleEst->cycle_length;
 
             $cycleEst->end_date = Carbon::parse($data['inputDate']);
-            if($cycleEst->period != $difference){
-                $cycleEst->cycle = $cycleBefore + ($difference - $cycleEst->period);
+            if($cycleEst->period_length != $difference){
+                $cycleEst->cycle_length = $cycleBefore + ($difference - $cycleEst->period_length);
+                $cycleEst->period_length = $difference;
             }
             $cycleEst->type = 'hist';
             $cycleEst->save();
@@ -106,9 +121,6 @@ class CycleRepo{
                 'end_date' => null,
                 'user_id' => $user->id
             ]);
-        } else {
-            $istihadhah->end_date = Carbon::parse($data['inputDate']);
-            $istihadhah->save();
         }
     }
 

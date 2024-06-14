@@ -23,16 +23,25 @@ class CycleController extends Controller
 
         return $this->success(
             CycleResource::collection($cycle),
-            "Bergasil mengambil seluruh data"
+            "Berhasil mengambil seluruh data"
         );
     }
 
     public function beginCycle(CycleRequest $request){
         CycleRepo::beginCycle($request);
 
+//        return response()->json([
+//            'data' => $data
+//        ]);
+
         return $this->success(
             message: 'Berhasil memulai siklus'
         );
+    }
+
+    public function begin(CycleRequest $request)
+    {
+        return 'haiii';
     }
 
     public function continueCycle(CycleRequest $request){
@@ -45,6 +54,10 @@ class CycleController extends Controller
 
     public function completeCycle(CycleRequest $request){
         CycleRepo::endCycle($request);
+
+//        return response()->json([
+//            'data' => $data
+//        ]);
 
         return $this->success(
             message: 'Berhasil mengakhiri Siklus'
