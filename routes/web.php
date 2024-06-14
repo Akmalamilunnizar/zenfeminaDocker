@@ -83,12 +83,16 @@ Route::middleware(['auth', 'role:admin'])->group(function (){
         });
 
     // Profile password update routes
-    Route::prefix('profile')->group(function () {
-        Route::get('password', [ProfileController::class, 'showUpdatePasswordForm'])->name('profile.password.form');
-        Route::post('password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    Route::prefix('profiles')
+        ->name('profiles.')
+        ->controller(ProfileController::class)
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::put('/{user}/update', 'update')->name('update');
+            Route::put('/{user}/updatePassword', 'updatePassword')->name('updatePassword');
     });
-    
-    Route::resource('profile', ProfileController::class)->except(['show']);
+
+//    Route::resource('profile', ProfileController::class)->except(['show']);
 });
 
 Route::get('notificationEx', function (){

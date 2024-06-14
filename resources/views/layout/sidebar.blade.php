@@ -84,7 +84,7 @@
             <li class="sidebar-title">Account</li>
 
             <li class="sidebar-item @yield('profile') ">
-                <a href="{{route('profile.index')}}"  class='sidebar-link'>
+                <a href="{{route('profiles.index')}}"  class='sidebar-link'>
                     <i class="bi bi-person-fill"></i>
                     <span>Profile</span>
                 </a>

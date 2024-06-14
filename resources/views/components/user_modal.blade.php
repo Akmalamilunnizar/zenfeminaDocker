@@ -51,10 +51,7 @@
                             <input type="password" name="password" class="form-control" id="password">
                             <span class="input-group-text" id="toggleContainer"><i id="togglePassword" class="toggle-password bi bi-eye-fill"></i></span>
                             <div class="invalid-feedback"></div>
-
-{{--                            <span id="togglePassword" class="toggle-password bi bi-eye-fill"></span>--}}
                         </div>
-{{--                        <div class="invalid-feedback"></div>--}}
                     </div>
                 </div>
                 <div class="modal-footer">
