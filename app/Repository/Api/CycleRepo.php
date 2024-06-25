@@ -93,10 +93,10 @@ class CycleRepo{
             'user_id' => $user->id
         ])->orderBy('id', 'desc')->first();
 
-        if($istihadhah->end_date == null){
-            $istihadhah->end_date = Carbon::parse($data['inputDate']);
-            $istihadhah->save();
-        } else {
+        $endDate = Carbon::parse($cycleEst->end_date);
+        $now = Carbon::now();
+
+        if($now->gte($endDate) && $cycleEst->end_date == null){
             $startDate = Carbon::parse($cycleEst->start_date)->subDays(1);
             $difference = Carbon::parse($data['inputDate'])->diffInDays($startDate);
             $cycleBefore = $cycleEst->cycle_length;
@@ -121,7 +121,40 @@ class CycleRepo{
                 'end_date' => null,
                 'user_id' => $user->id
             ]);
+        } else {
+            $istihadhah->end_date = Carbon::parse($data['inputDate']);
+            $istihadhah->save();
         }
+
+//        if($istihadhah->end_date == null){
+//            $istihadhah->end_date = Carbon::parse($data['inputDate']);
+//            $istihadhah->save();
+//        } else {
+//            $startDate = Carbon::parse($cycleEst->start_date)->subDays(1);
+//            $difference = Carbon::parse($data['inputDate'])->diffInDays($startDate);
+//            $cycleBefore = $cycleEst->cycle_length;
+//
+//            $cycleEst->end_date = Carbon::parse($data['inputDate']);
+//            if($cycleEst->period_length != $difference){
+//                $cycleEst->cycle_length = $cycleBefore + ($difference - $cycleEst->period_length);
+//                $cycleEst->period_length = $difference;
+//            }
+//            $cycleEst->type = 'hist';
+//            $cycleEst->save();
+//
+//            // set Est
+//            $avgCycle = static::getAvg('cycle_length');
+//            $avgPeriod = static::getAvg('period_length');
+//            $value = ($avgCycle- $avgPeriod) + 1;
+//            Cycle::create([
+//                'type' => 'est',
+//                'cycle_length' => $avgCycle,
+//                'period_length' => $avgPeriod,
+//                'start_date' => Carbon::parse($data['inputDate'])->addDays($value),
+//                'end_date' => null,
+//                'user_id' => $user->id
+//            ]);
+//        }
     }
 
     public static function getAvg($type) :int
