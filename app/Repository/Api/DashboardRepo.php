@@ -121,10 +121,13 @@ class DashboardRepo
             $condition = 'Hari ke-' . $value;
             $message = 'Anda dalam keadaan Haid';
             $button = 'Akhiri Siklus';
+        } else if($now->gte($startDateEst) && $cycleEst->on_started == 0){
+            $condition = 'Anda mungkin Haid';
+            $message = 'Apakah hari ini anda haid?';
+            $button = 'Awali Siklus';
         } else {
-
             $dateNow3 = Carbon::now();
-            $value = $startDateEst->diffInDays($dateNow3);
+            $value = $startDateEst->diffInDays($dateNow3) + 1;
 
             if($value == 0)
             {
