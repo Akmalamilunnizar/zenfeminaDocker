@@ -9,6 +9,8 @@ class FailedValidation extends Exception
 {
     use ApiResponser;
 
+    protected $errors; // ✅ Deklarasi properti
+
     public function __construct($errors)
     {
         $this->errors = $errors;
