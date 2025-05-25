@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   app:
-    image: php:8.2-fpm
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: laravel_app
     restart: unless-stopped
     working_dir: /var/www
@@ -10,8 +12,9 @@ services:
       - ./:/var/www
     networks:
       - laravel
-    # If you want to install dependencies on container start, you can override the command here.
-    # command: php-fpm
+    depends_on:
+      - mysql
+    command: php-fpm
 
   webserver:
     image: nginx:alpine
@@ -40,6 +43,7 @@ services:
       MYSQL_PASSWORD: laravel
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./docker/mysql/conf.d/custom.cnf:/etc/mysql/conf.d/custom.cnf
     networks:
       - laravel
 

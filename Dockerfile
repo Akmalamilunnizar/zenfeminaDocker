@@ -1,10 +1,8 @@
-# Set base image
+# Dockerfile
 FROM php:8.2-fpm
 
-# Set working directory
 WORKDIR /var/www
 
-# Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpng-dev \
@@ -19,17 +17,20 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
-# Install Composer
+# Install composer from official image
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copy project files
+# Copy application files
 COPY . .
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www \
-    && chmod -R 755 /var/www/storage
+# Install composer dependencies (without dev for production)
+RUN composer install --no-dev --optimize-autoloader
 
-# Expose port
+# Set permissions for storage and cache
+RUN chown -R www-data:www-data /var/www \
+    && chmod -R 755 storage bootstrap/cache
+
 EXPOSE 9000
 
 CMD ["php-fpm"]
+
