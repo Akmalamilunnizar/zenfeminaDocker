@@ -7,33 +7,33 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.2'
         extensions: mbstring, xml, ctype, iconv, intl, pdo_sqlite, dom, filter, gd, iconv, json, mbstring, pdo
-        
+
     - name: Copy .env.testing
       run: php -r "file_exists('.env.testing') || copy('.env.example', '.env.testing');"
-      
+
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-      
+
     - name: Generate key
       run: php artisan key:generate --env=testing
-      
+
     - name: Directory Permissions
       run: chmod -R 777 storage bootstrap/cache
-      
+
     - name: Create Database
       run: |
         mkdir -p database
         touch database/database.sqlite
-        
+
     - name: Execute tests via PHPUnit
       env:
         DB_CONNECTION: sqlite
@@ -42,11 +42,11 @@ jobs:
         echo "🧪 Menjalankan Unit Tests..."
         echo "----------------------------------------"
         vendor/bin/phpunit --testsuite Unit
-        
+
         echo "\n🧪 Menjalankan Feature Tests..."
         echo "----------------------------------------"
         vendor/bin/phpunit --testsuite Feature
-        
+
         echo "\n📊 Ringkasan Hasil Test:"
         echo "----------------------------------------"
         vendor/bin/phpunit --testdox
@@ -64,20 +64,20 @@ jobs:
           script: |
             echo "📁 Masuk ke direktori proyek..."
             cd /root/zenfeminaDocker
-            
+
             echo "🔄 Mengkonfigurasi Git..."
             git config --global --add safe.directory /root/zenfeminaDocker
-            
+
             echo "🔄 Menarik update dari branch main..."
             git fetch origin
             git reset --hard origin/main
-            
+
             echo "🧹 Menghentikan container lama..."
             docker-compose down
-            
+
             echo "⚙️ Membangun dan menjalankan ulang container..."
             docker-compose up -d --build
-            
+
             echo "⏳ Menunggu MySQL siap..."
             docker exec mysql_db sh -c '
               max_tries=30
@@ -86,7 +86,7 @@ jobs:
               until php -r "
                 try {
                   \$pdo = new PDO(
-                    \"mysql:host=localhost;port=3306;dbname=laravel\",
+                    \"mysql:host=mysql;port=3306;dbname=laravel\",
                     \"laravel\",
                     \"laravel\"
                   );
@@ -97,29 +97,29 @@ jobs:
                   exit(1);
                 }
               " || [ $counter -eq $max_tries ]; do
-                echo "Mencoba koneksi ke database... ($counter/$max_tries)"
+                echo \"Mencoba koneksi ke database... ($counter/$max_tries)\"
                 sleep 2
                 counter=$((counter+1))
               done
-              
+
               if [ $counter -eq $max_tries ]; then
                 echo "❌ Timeout menunggu database setelah $((max_tries * 2)) detik"
                 exit 1
               fi
             '
-            
+
             echo "📦 Menjalankan composer install..."
             docker exec -u www-data laravel_app composer install --no-interaction --prefer-dist --optimize-autoloader
-            
+
             echo "🔐 Generate APP key..."
             docker exec -u www-data laravel_app php artisan key:generate --force
-            
+
             echo "🧹 Membersihkan cache..."
             docker exec -u www-data laravel_app php artisan config:clear
             docker exec -u www-data laravel_app php artisan cache:clear
-            
+
             echo "🗃️ Reset dan migrasi database..."
             docker exec -u www-data laravel_app php artisan migrate:fresh --force --seed
-            
+
             echo "✅ Deploy selesai!"
 
