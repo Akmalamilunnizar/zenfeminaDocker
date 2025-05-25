@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   app:
-    image: laravelsail/php82-composer:latest
+    image: php:8.2-fpm
     container_name: laravel_app
     restart: unless-stopped
     working_dir: /var/www
@@ -10,6 +10,8 @@ services:
       - ./:/var/www
     networks:
       - laravel
+    # If you want to install dependencies on container start, you can override the command here.
+    # command: php-fpm
 
   webserver:
     image: nginx:alpine
@@ -46,3 +48,4 @@ networks:
 
 volumes:
   mysql_data:
+

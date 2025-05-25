@@ -1,0 +1,167 @@
+* [33m8b989f7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Fix branch to main in deploy trigger
+* [33m50db3b5[m Trigger deploy
+* [33mb8d9ba2[m fix(vps) : can't go login into the dashboard because /store problem
+* [33m497a952[m setting up docker github ci/cd
+* [33m39315bb[m Add GitHub Actions workflow for auto deploy
+* [33mc1fdb04[m fix: cycle api
+* [33md2d23e9[m fix: cardview api
+* [33m5402945[m fix: cycle api
+* [33m363e57b[m feat: profile and password update
+* [33m15ae744[m feat: Update password form layout in update_password.blade.php
+* [33m3eb0547[m fix: sidebar
+* [33m080e4b8[m style: show and hide password
+* [33mb03fb7f[m fix: cycle condition
+* [33m5d083f5[m fix: responses
+* [33mb5390ad[m fix
+* [33m5576c2b[m fix: dashboard api response
+*   [33m318d8ac[m Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+[32m|[m[33m\[m  
+[32m|[m * [33m6f3da3c[m feat: Update password form layout in update_password.blade.php
+* [33m|[m [33mb22a874[m fix: dashboard api response
+[33m|[m[33m/[m  
+* [33mac4be05[m feat: reminder notification command
+* [33m9625921[m fix: base notification view
+*   [33m1a4d9fb[m Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+[34m|[m[35m\[m  
+[34m|[m * [33m18a29b2[m feat: Add PrayerTimes API endpoint
+* [35m|[m [33ma472ac2[m fix: user api request
+[35m|[m[35m/[m  
+* [33md1a732f[m fix: cycle api
+* [33mb35a572[m fix: dashboard api data
+* [33mc648501[m fix: cycle api
+* [33m90c9c86[m feat: dashboard cardview api
+* [33maf9cc97[m fcm init
+* [33m9ca247b[m fix: education card view
+* [33m4bcec5d[m fix: user resource api
+* [33mfde0f38[m fix seeder
+* [33me5e3f9e[m remove unused field
+* [33m7f1eea8[m ix: user api update
+* [33mbb263d0[m add: image field on user table
+* [33m0827c4d[m feat: fastingCheckCommand
+* [33me5e6c15[m add:VerificationCode design
+* [33ma6a40a9[m style: update verification email build
+* [33mb07b359[m style: update verification email
+* [33ma6c84e1[m feat: delete user command
+* [33m12c1033[m feat: cycle api
+* [33mb12fa50[m feat(style) : icon eye
+* [33md0b8102[m fix: question's api
+*   [33m95e2cab[m merging
+[36m|[m[1;31m\[m  
+[36m|[m * [33m77cb4bf[m add:VerificationEmail design
+* [1;31m|[m [33m807b80d[m add: profile design and controller
+[1;31m|[m[1;31m/[m  
+* [33m08ce9c9[m fix: migration
+* [33m53b47d4[m feat(style) : icon tag
+* [33mae4042f[m fix: auth's eror
+* [33m5b7fdd3[m fix: login
+* [33m61eb585[m migration commit2
+* [33mb7dd547[m add: user and cycle's migrations
+* [33mf1290a7[m Pesan commit Anda
+*   [33m0bed048[m Menyelesaikan konflik pada login.blade.php
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33m0eb12ef[m  feat: sign out
+[1;32m|[m * [33m64c17ae[m fix: education's validation
+[1;32m|[m * [33m84201e8[m refactor: custom error message
+[1;32m|[m * [33m41dadba[m fix: auth validation
+* [1;33m|[m [33mb712044[m style: update dashboard
+[1;33m|[m[1;33m/[m  
+* [33m54bc01d[m style: update dashboard
+*   [33m645add4[m Menyelesaikan konflik
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33ma9f951a[m fix api response
+[1;34m|[m * [33m7d37718[m chore: login route
+[1;34m|[m * [33m2ffb9ca[m unignore dome folders
+[1;34m|[m * [33m08c62e5[m chore: remove ignore folder
+* [1;35m|[m [33m1b054a0[m style: update dashboard
+[1;35m|[m[1;35m/[m  
+* [33meaac4b3[m style: add swal js
+*   [33mfcd5dd9[m Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+[1;36m|[m[31m\[m  
+[1;36m|[m *   [33m93eaf6d[m update login form
+[1;36m|[m [32m|[m[33m\[m  
+[1;36m|[m * [33m|[m [33ma8eb261[m update: login form
+* [33m|[m [33m|[m [33m219e760[m style: Update login form and compile SCSS to CSS
+[33m|[m [33m|[m[33m/[m  
+[33m|[m[33m/[m[33m|[m   
+* [33m|[m [33m0f6a994[m fix: dashboard's title
+* [33m|[m [33m53b0dbc[m feat: dashboard chart
+* [33m|[m [33m19f0510[m style: dashboard chart
+* [33m|[m [33mc137d1c[m fix: modal layout
+* [33m|[m [33m0cf582d[m fix: user update condition
+* [33m|[m [33m3806b08[m fix: add some condition on userRequest
+* [33m|[m [33mf217922[m chore: delete unused views
+* [33m|[m [33m082a76b[m fix: CRUD user
+* [33m|[m [33m899beb1[m feat: CRUD categories
+* [33m|[m [33mcd1cf4b[m chore: rename some files
+* [33m|[m [33m5854111[m feat: CRUD educations
+* [33m|[m [33mbacc166[m style: add max height education
+* [33m|[m [33macdcb75[m feat: upload educations
+* [33m|[m [33m0956b50[m refactor: fix education table
+[33m|[m[33m/[m  
+* [33m5203b23[m style: edit form layout and design
+* [33mda988e0[m style: add page title
+* [33mfd286eb[m chore: remove unused code
+* [33m45340e7[m feat: delete educations
+* [33m9cc0e71[m feat: search education
+* [33mfacd757[m feat: education index
+*   [33m6040338[m Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+[34m|[m[35m\[m  
+[34m|[m * [33mb5cf35c[m add: login design1
+* [35m|[m [33m1ddad00[m feat: cycle api base
+[35m|[m[35m/[m  
+* [33mdf15211[m refactor: add user condition
+* [33m158ac73[m chore: delete unused field on istihadhah table
+* [33m3a6fc4c[m feat: dashboard api
+* [33m9065bbc[m chore: change end_date to be nullable
+* [33m0fcce18[m style: add some dashboard component
+* [33m5568b57[m refactor: change authenticatable's package
+* [33m74bcdd8[m style: change to light mode
+* [33m20f4780[m feat: reminder api
+* [33mdfe73b4[m fix: less user condition
+* [33mcd0a11a[m delete: unused models
+* [33md2b7a7d[m refactor: add trigger after delete user
+* [33m1e8040b[m refactor: delete some unused function
+* [33m4bf6059[m feat: education apo
+* [33m20fee8a[m fix: education's table
+* [33m7061d07[m fix: change table's name to singular
+* [33m2899366[m feat: debt api
+* [33m8b71548[m feat: profile api
+* [33me89fc93[m refactor: user model implement authenticatable
+* [33mf405600[m chore: change destroy controller
+* [33m6c9df43[m feat: login api
+* [33m6b68dcd[m feat: register api
+* [33m5860db8[m refactor:login using email instead of username
+* [33m5e7fecb[m refactor: add token field on user table
+* [33m264d931[m refactor: change user's table role
+* [33m08d9341[m refactor: add user's role
+* [33m8c348c0[m add: guest middleware
+* [33m185e7ac[m add: role permission
+* [33m6dda2fa[m refactor: password access on admin
+* [33m9d74509[m feat: CRUD users
+* [33m506a84e[m feat: login
+* [33m9b3af6b[m chore: change email to be unique
+* [33mc5b45b4[m add: sidebar and app layout
+* [33m63749b4[m add: login desain
+* [33m3074486[m chore: responden's form
+* [33mef0e3de[m chore: move to models directory
+* [33m05f24c6[m add: model token
+* [33m3fe352c[m add: Model Education
+* [33mae04761[m add : model Educations
+* [33m088adfc[m chore: delete some models
+* [33me50ed2a[m add: model's relationships
+* [33m02e6172[m add: reminder's trigger
+* [33m084453b[m add: category's migration
+*   [33me3c3ba7[m Merge branch 'main' of https://github.com/AzzaWafiqurrohmah/zenfeminaLaravel
+[36m|[m[1;31m\[m  
+[36m|[m *   [33md58f3e8[m Merge branch 'migration'
+[36m|[m [1;32m|[m[1;33m\[m  
+[36m|[m [1;32m|[m * [33m0728406[m migration commit2
+[36m|[m * [1;33m|[m [33m848c087[m Pesan commit Anda
+* [1;33m|[m [1;33m|[m [33m0c56ec7[m add: migrations
+[1;33m|[m [1;33m|[m[1;33m/[m  
+[1;33m|[m[1;33m/[m[1;33m|[m   
+* [1;33m|[m [33m9e6190f[m add: user and cycle's migrations
+[1;33m|[m[1;33m/[m  
+* [33m1307298[m add: laravel framework
+* [33m87ba93b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/master[m[33m)[m Ignore .ssh folder
+* [33m4b61b57[m Initial commit from VPS
