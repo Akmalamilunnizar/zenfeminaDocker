@@ -7,6 +7,8 @@
 @endpush
 
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
         <div class="row h-100">
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
@@ -47,47 +49,55 @@
             </div>
         </div>
 
-<script>
-// Toggle password visibility
-document.querySelector('.toggle-password').addEventListener('click', function() {
-    const passwordInput = document.getElementById('password');
-    const icon = this.querySelector('i');
-
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        icon.classList.remove('bi-eye');
-        icon.classList.add('bi-eye-slash');
-    } else {
-        passwordInput.type = 'password';
-        icon.classList.remove('bi-eye-slash');
-        icon.classList.add('bi-eye');
-    }
-});
-
-document.getElementById('loginForm').addEventListener('submit', function (e){
-    e.preventDefault();
-    $.ajax({
-        type: 'POST',
-        url: '/store',
-        data: $(this).serialize(),
-        success(res) {
-            if(res.status == 'success') {
-                window.location.href = res.redirect;
-            } else {
-                const input = $(`#password`);
-                input.addClass('is-invalid');
-                input.next().html(res.password);
-            }
-        },
-        error(err) {
-            if(err.status == 422) {
-                displayFormErrors(err.responseJSON.data);
-            }
+        <script>
+    // Set CSRF token di header untuk semua request AJAX
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         }
     });
-});
 
+    // Toggle password visibility
+    document.querySelector('.toggle-password').addEventListener('click', function() {
+        const passwordInput = document.getElementById('password');
+        const icon = this.querySelector('i');
+
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        }
+    });
+
+    // Submit login form via AJAX
+    document.getElementById('loginForm').addEventListener('submit', function (e){
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/store',
+            data: $(this).serialize(),
+            success(res) {
+                if(res.status == 'success') {
+                    window.location.href = res.redirect;
+                } else {
+                    const input = $(`#password`);
+                    input.addClass('is-invalid');
+                    input.next().html(res.password);
+                }
+            },
+            error(err) {
+                if(err.status == 422) {
+                    displayFormErrors(err.responseJSON.data);
+                }
+            }
+        });
+    });
 </script>
+
 
 
 @endsection
